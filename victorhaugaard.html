@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Haugaard - Photography & Videography</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #0a0a0a;
+            color: #f5f5f5;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 30px 50px;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.95) 0%, transparent 100%);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+
+        /* Navigation */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        /* Toggle Switch */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .toggle-option {
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+
+        .toggle-option.inactive {
+            opacity: 0.3;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: #f5f5f5;
+            border-radius: 50%;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .toggle-switch.video .toggle-slider {
+            transform: translateX(26px);
+        }
+
+        /* Contact Button */
+        .contact-btn {
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #f5f5f5;
+            padding: 10px 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 0;
+        }
+
+        .contact-btn:hover {
+            background: #f5f5f5;
+            color: #0a0a0a;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hero Background Video/Image */
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .hero-background video,
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Dark overlay for better text readability */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .hero-content {
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease 0.3s forwards;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: clamp(30px, 8vw, 60px);
+            font-weight: 100;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #999 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            letter-spacing: 4px;
+            opacity: 0.6;
+            text-transform: uppercase;
+        }
+
+        /* Gallery Container */
+        .gallery-container {
+            min-height: 100vh;
+            padding: 100px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Photo Gallery - Max 3 columns */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+            grid-auto-flow: dense;
+        }
+
+        .photo-gallery.hidden {
+            display: none;
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            background: #1a1a1a;
+            aspect-ratio: 1/1;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Pattern: 1 big, 2 small, 1 tall - repeats every 4 items */
+        /* Big square (2x2) */
+        .photo-item:nth-child(4n+1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* Two small squares stay default 1x1 */
+        
+        /* Tall vertical (1x2) */
+        .photo-item:nth-child(4n+4) {
+            grid-row: span 2;
+            aspect-ratio: 1/2;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: #1a1a1a;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+        }
+
+        .photo-item:hover .photo-overlay {
+            opacity: 1;
+        }
+
+        .photo-title {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Video Gallery */
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .video-gallery.hidden {
+            display: none;
+        }
+
+        .video-item {
+            position: relative;
+            background: #111;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .video-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .video-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .video-item:hover .play-icon {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: #fff;
+        }
+
+        .play-icon::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 20px solid #0a0a0a;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 5px;
+        }
+
+        /* Contact Modal */
+        .contact-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 2000;
+        }
+
+        .contact-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: #111;
+            padding: 60px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+
+        .modal-close:hover {
+            opacity: 1;
+        }
+
+        .modal-close::before,
+        .modal-close::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 1px;
+            background: #f5f5f5;
+        }
+
+        .modal-close::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .modal-close::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        /* Profile Picture in Contact */
+        .profile-picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            overflow: hidden;
+            background: #1a1a1a;
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contact-info h2 {
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        .contact-info a {
+            color: #f5f5f5;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.6;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 20px;
+            }
+
+            .hero-title {
+                font-size: clamp(30px, 8vw, 50px);
+                letter-spacing: 4px;
+            }
+
+            .gallery-container {
+                padding: 80px 20px;
+            }
+
+            .photo-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            /* Simplify pattern for mobile - just alternate between big and small */
+            .photo-item:nth-child(4n+1) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .photo-item:nth-child(4n+4) {
+                grid-row: span 1;
+                aspect-ratio: 1/1;
+            }
+
+            .video-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-controls {
+                gap: 20px;
+            }
+
+            .toggle-container {
+                padding: 6px 15px;
+            }
+
+            .modal-content {
+                padding: 40px 30px;
+            }
+
+            .profile-picture {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                VICTOR HAUGAARD
+                <div class="subtitle">VISUAL STORYTELLER</div>
+            </div>
+            <div class="nav-controls">
+                <div class="toggle-container">
+                    <span class="toggle-option" id="stillOption">STILL</span>
+                    <div class="toggle-switch" id="toggleSwitch">
+                        <div class="toggle-slider"></div>
+                    </div>
+                    <span class="toggle-option inactive" id="videoOption">VIDEO</span>
+                </div>
+                <button class="contact-btn" onclick="openContact()">CONTACT</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <!-- Hero Background - Choose either video or image -->
+        <div class="hero-background">
+            <!-- For Video Background (uncomment and add your video) -->
+            <video autoplay muted loop playsinline>
+                <source src="images/hero-video.mp4" type="video/mp4">
+            </video>
+            
+            <!-- For Image Background -->
+            <!--<img src="images/hero-bg.jpg" alt="Hero background">-->
+        </div>
+        
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">Victors Visuella Verkstad</h1>
+            <p class="hero-subtitle">Photography & Cinematography</p>
+        </div>
+    </section>
+
+    <div class="gallery-container">
+        <!-- Photo Gallery -->
+        <div class="photo-gallery" id="photoGallery">
+            <div class="photo-item" style="animation-delay: 0.05s">
+                <img src="images/photo1.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Seoul, South Korea</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.1s">
+                <img src="images/photo2.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Cooking Ugali at Sokoine Primary School, Tanzania.</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.15s">
+                <img src="images/photo3.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Lonely fallen tree in Northern Portugal</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.2s">
+                <img src="images/photo4.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Wineyards in Azores Islands, Portugal</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.25s">
+                <img src="images/photo5.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 05</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.3s">
+                <img src="images/photo6.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 06</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.35s">
+                <img src="images/photo7.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 07</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.4s">
+                <img src="images/photo8.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 08</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.45s">
+                <img src="images/photo9.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 09</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.5s">
+                <img src="images/photo10.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Calma Tapas Bar</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.55s">
+                <img src="images/photo11.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 11</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.6s">
+                <img src="images/photo12.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 12</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.65s">
+                <img src="images/photo13.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 13</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.7s">
+                <img src="images/photo14.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 14</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.75s">
+                <img src="images/photo15.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 15</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.8s">
+                <img src="images/photo16.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 16</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.85s">
+                <img src="images/photo17.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 17</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.9s">
+                <img src="images/photo18.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 18</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.95s">
+                <img src="images/photo19.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 19</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 1s">
+                <img src="images/photo20.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 20</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 1s">
+                <img src="images/photo21.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 20</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 1s">
+                <img src="images/photo22.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 20</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 1s">
+                <img src="images/photo23.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 20</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 1s">
+                <img src="images/photo24.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 20</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 1s">
+                <img src="images/photo25.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 20</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 1s">
+                <img src="images/photo26.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 20</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 1s">
+                <img src="images/photo27.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 20</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 1s">
+                <img src="images/photo28.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 20</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 1s">
+                <img src="images/photo29.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 20</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 1s">
+                <img src="images/photo30.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 20</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 1s">
+                <img src="images/photo31.jpg" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Project 20</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Gallery -->
+        <div class="video-gallery hidden" id="videoGallery">
+            <div class="video-item" style="animation-delay: 0.1s">
+                <img src="images/video1.jpg" alt="Video project">
+                <div class="play-icon"></div>
+                <div class="photo-overlay">
+                    <span class="photo-title">Video Project 01</span>
+                </div>
+            </div>
+            <div class="video-item" style="animation-delay: 0.2s">
+                <img src="images/video2.jpg" alt="Video project">
+                <div class="play-icon"></div>
+                <div class="photo-overlay">
+                    <span class="photo-title">Video Project 02</span>
+                </div>
+            </div>
+            <div class="video-item" style="animation-delay: 0.3s">
+                <img src="images/video3.jpg" alt="Video project">
+                <div class="play-icon"></div>
+                <div class="photo-overlay">
+                    <span class="photo-title">Video Project 03</span>
+                </div>
+            </div>
+            <div class="video-item" style="animation-delay: 0.4s">
+                <img src="images/video4.jpg" alt="Video project">
+                <div class="play-icon"></div>
+                <div class="photo-overlay">
+                    <span class="photo-title">Video Project 04</span>
+                </div>
+            </div>
+            <div class="video-item" style="animation-delay: 0.5s">
+                <img src="images/video5.jpg" alt="Video project">
+                <div class="play-icon"></div>
+                <div class="photo-overlay">
+                    <span class="photo-title">Video Project 05</span>
+                </div>
+            </div>
+            <div class="video-item" style="animation-delay: 0.6s">
+                <img src="images/video6.jpg" alt="Video project">
+                <div class="play-icon"></div>
+                <div class="photo-overlay">
+                    <span class="photo-title">Video Project 06</span>
+                </div>
+            </div>
+            <div class="video-item" style="animation-delay: 0.7s">
+                <img src="images/video7.jpg" alt="Video project">
+                <div class="play-icon"></div>
+                <div class="photo-overlay">
+                    <span class="photo-title">Video Project 07</span>
+                </div>
+            </div>
+            <div class="video-item" style="animation-delay: 0.8s">
+                <img src="images/video8.jpg" alt="Video project">
+                <div class="play-icon"></div>
+                <div class="photo-overlay">
+                    <span class="photo-title">Video Project 08</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="contact-modal" id="contactModal">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeContact()"></div>
+            <div class="contact-info">
+                <div class="profile-picture">
+                    <img src="images/profile.jpg" alt="Victor Haugaard">
+                </div>
+                <h2>Get in Touch</h2>
+                <p><strong>Victor Haugaard</strong></p>
+                <p>Photography & Cinematography</p>
+                <p>Gothenburg, Sweden</p>
+                <br>
+                <p>Email: <a href="mailto:victorhaugaard@gmail.com">victorhaugaard@gmail.com</a></p>
+                <p>Phone: <a href="tel:+4741303593">+47 413 03 593</a></p>
+                <br>
+                <p>Instagram: <a href="#">@victorhaugaard</a></p>
+                <p>Vimeo: <a href="#">vimeo.com/victorhaugaard</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle between Still and Video
+        const toggleSwitch = document.getElementById('toggleSwitch');
+        const stillOption = document.getElementById('stillOption');
+        const videoOption = document.getElementById('videoOption');
+        const photoGallery = document.getElementById('photoGallery');
+        const videoGallery = document.getElementById('videoGallery');
+        
+        let isVideo = false;
+
+        toggleSwitch.addEventListener('click', () => {
+            isVideo = !isVideo;
+            
+            if (isVideo) {
+                toggleSwitch.classList.add('video');
+                stillOption.classList.add('inactive');
+                videoOption.classList.remove('inactive');
+                photoGallery.classList.add('hidden');
+                videoGallery.classList.remove('hidden');
+                
+                // Reset animations for video gallery
+                videoGallery.querySelectorAll('.video-item').forEach((item, index) => {
+                    item.style.animation = 'none';
+                    setTimeout(() => {
+                        item.style.animation = `fadeInUp 0.8s ease ${index * 0.1}s forwards`;
+                    }, 10);
+                });
+            } else {
+                toggleSwitch.classList.remove('video');
+                stillOption.classList.remove('inactive');
+                videoOption.classList.add('inactive');
+                photoGallery.classList.remove('hidden');
+                videoGallery.classList.add('hidden');
+                
+                // Reset animations for photo gallery
+                photoGallery.querySelectorAll('.photo-item').forEach((item, index) => {
+                    item.style.animation = 'none';
+                    setTimeout(() => {
+                        item.style.animation = `fadeInUp 0.8s ease ${index * 0.1}s forwards`;
+                    }, 10);
+                });
+            }
+        });
+
+        // Click on options to toggle
+        stillOption.addEventListener('click', () => {
+            if (isVideo) toggleSwitch.click();
+        });
+
+        videoOption.addEventListener('click', () => {
+            if (!isVideo) toggleSwitch.click();
+        });
+
+        // Contact Modal
+        function openContact() {
+            document.getElementById('contactModal').classList.add('active');
+        }
+
+        function closeContact() {
+            document.getElementById('contactModal').classList.remove('active');
+        }
+
+        // Close modal on background click
+        document.getElementById('contactModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeContact();
+            }
+        });
+
+        // Smooth scroll effect on gallery items
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all gallery items
+        document.querySelectorAll('.photo-item, .video-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
