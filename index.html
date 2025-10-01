@@ -21,6 +21,16 @@
             line-height: 1.6;
         }
 
+        /* Custom Scrollbar Hiding */
+        .lightbox-content {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        .lightbox-content::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
         /* Header */
         header {
             position: fixed;
@@ -426,7 +436,7 @@
             margin-bottom: 10px;
         }
 
-        /* Infinite Carousel for Project Images */
+        /* Infinite Carousel - FIXED VERSION */
         .lightbox-gallery {
             overflow: hidden;
             margin-top: 30px;
@@ -439,8 +449,8 @@
         .lightbox-carousel {
             display: flex;
             gap: 15px;
-            animation: scroll-carousel 30s linear infinite;
             width: fit-content;
+            animation: scroll-carousel 40s linear infinite;
         }
 
         .lightbox-carousel:hover {
@@ -467,7 +477,7 @@
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-50%);
+                transform: translateX(calc(-100% / 3));
             }
         }
 
@@ -720,7 +730,7 @@
                     <span class="photo-title">Azores Islands</span>
                 </div>
             </div>
-                        <div class="photo-item" style="animation-delay: 0.15s">
+            <div class="photo-item" style="animation-delay: 0.15s">
                 <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo3.jpg?alt=media&token=9e822dc9-3cd3-4958-9298-7144463bc8da" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Lonely fallen tree in Northern Portugal</span>
@@ -1096,7 +1106,7 @@
             }
         }
 
-        // Lightbox functions with infinite carousel
+        // Lightbox with FIXED infinite carousel
         function openLightbox(projectId) {
             const modal = document.getElementById('lightboxModal');
             const content = document.getElementById('lightboxContent');
@@ -1106,13 +1116,13 @@
             
             let galleryHTML = '';
             if (project.images.length > 1) {
-                // Create carousel with duplicated images for infinite scroll
-                const allImages = [...project.images, ...project.images];
+                // Triple the images for seamless infinite scroll
+                const tripleImages = [...project.images, ...project.images, ...project.images];
                 
                 galleryHTML = `
                     <div class="lightbox-gallery">
                         <div class="lightbox-carousel">
-                            ${allImages.map(img => 
+                            ${tripleImages.map(img => 
                                 `<img src="${img}" alt="${project.title}" onclick="changeMainImage('${img}')">`
                             ).join('')}
                         </div>
