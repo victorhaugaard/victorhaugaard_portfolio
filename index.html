@@ -252,6 +252,18 @@
             background-color: #1a1a1a;
         }
 
+        /* Lazy load fade-in effect */
+        .photo-item img[loading="lazy"],
+        .lightbox-gallery img[loading="lazy"] {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .photo-item img[loading="lazy"].loaded,
+        .lightbox-gallery img[loading="lazy"].loaded {
+            opacity: 1;
+        }
+
         .photo-item:hover img {
             transform: scale(1.05);
         }
@@ -707,205 +719,205 @@
         <!-- Photo Gallery -->
         <div class="photo-gallery" id="photoGallery">
             <div class="photo-item" style="animation-delay: 0.05s" onclick="openLightbox('ericeria')">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo1.jpg?alt=media&token=d4acd7df-c946-49f9-a9dc-23f4ce8a9c66" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo1.jpg?alt=media&token=d4acd7df-c946-49f9-a9dc-23f4ce8a9c66" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Ericeria Surfing</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.1s" onclick="openLightbox('tanzania')">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo2.jpg?alt=media&token=33b008db-e557-4a99-b025-f2daf30b484a" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo2.jpg?alt=media&token=33b008db-e557-4a99-b025-f2daf30b484a" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Cooking Ugali - Tanzania</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.15s" onclick="openLightbox('portugal-tree')">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo3.jpg?alt=media&token=9e822dc9-3cd3-4958-9298-7144463bc8da" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo3.jpg?alt=media&token=9e822dc9-3cd3-4958-9298-7144463bc8da" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Northern Portugal</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.2s" onclick="openLightbox('azores')">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo4.jpg?alt=media&token=8ecd0e2c-7963-4851-bcf4-85c601bb5d17" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo4.jpg?alt=media&token=8ecd0e2c-7963-4851-bcf4-85c601bb5d17" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Azores Islands</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.15s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo3.jpg?alt=media&token=9e822dc9-3cd3-4958-9298-7144463bc8da" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo3.jpg?alt=media&token=9e822dc9-3cd3-4958-9298-7144463bc8da" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Lonely fallen tree in Northern Portugal</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.2s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo4.jpg?alt=media&token=8ecd0e2c-7963-4851-bcf4-85c601bb5d17" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo4.jpg?alt=media&token=8ecd0e2c-7963-4851-bcf4-85c601bb5d17" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Wineyards. Azores Islands, Portugal</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.25s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo5.jpg?alt=media&token=9702673f-3fc5-4f54-ad22-0a4e69754ed1" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo5.jpg?alt=media&token=9702673f-3fc5-4f54-ad22-0a4e69754ed1" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Poster Shots</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.3s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo6.jpg?alt=media&token=59b27bf3-23e8-43b7-8596-b9e730cbbeca" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo6.jpg?alt=media&token=59b27bf3-23e8-43b7-8596-b9e730cbbeca" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 06</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.35s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo7.jpg?alt=media&token=be0b8e52-0d8a-43ce-b918-3c11c5ee4ef4" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo7.jpg?alt=media&token=be0b8e52-0d8a-43ce-b918-3c11c5ee4ef4" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 07</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.4s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo8.jpg?alt=media&token=3dff41ea-20bf-450f-8c4f-9eff06b07a8a" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo8.jpg?alt=media&token=3dff41ea-20bf-450f-8c4f-9eff06b07a8a" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 08</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.45s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo9.jpg?alt=media&token=e067078d-bb90-48bf-b398-80622e8ad9b6" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo9.jpg?alt=media&token=e067078d-bb90-48bf-b398-80622e8ad9b6" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Symmetries. Seoul, South Korea.</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.5s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo10.jpg?alt=media&token=0afe6ef3-9ec1-4a55-b482-00784f40ef9d" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo10.jpg?alt=media&token=0afe6ef3-9ec1-4a55-b482-00784f40ef9d" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Calma Tapas Bar</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.55s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo11.jpg?alt=media&token=f85072a4-3c61-4bbd-bbce-1b383e5e295a" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo11.jpg?alt=media&token=f85072a4-3c61-4bbd-bbce-1b383e5e295a" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Traditional Inka. Peru.</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.6s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo12.jpg?alt=media&token=01c6e51b-0789-42bc-ac2e-d263884bc943" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo12.jpg?alt=media&token=01c6e51b-0789-42bc-ac2e-d263884bc943" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 12</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.65s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo13.jpg?alt=media&token=ce881bfd-d415-49b0-ab9e-9c8b0f033f3d" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo13.jpg?alt=media&token=ce881bfd-d415-49b0-ab9e-9c8b0f033f3d" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 13</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.7s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo14.jpg?alt=media&token=25c9f8f6-b6d8-4fb7-804d-ff829d1782f5" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo14.jpg?alt=media&token=25c9f8f6-b6d8-4fb7-804d-ff829d1782f5" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 14</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.75s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo15.jpg?alt=media&token=ffe99324-7d52-4387-a149-97fc8e38b7e2" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo15.jpg?alt=media&token=ffe99324-7d52-4387-a149-97fc8e38b7e2" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 15</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.8s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo16.jpg?alt=media&token=e79ed287-89b5-44de-9f47-7358ac408da2" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo16.jpg?alt=media&token=e79ed287-89b5-44de-9f47-7358ac408da2" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 16</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.85s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo17.jpg?alt=media&token=e8bcaf1f-afb4-492e-938a-07bbf8c9c16c" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo17.jpg?alt=media&token=e8bcaf1f-afb4-492e-938a-07bbf8c9c16c" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 17</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.9s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo18.jpg?alt=media&token=0506df2c-ba98-4c47-b80d-4c23f571b27f" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo18.jpg?alt=media&token=0506df2c-ba98-4c47-b80d-4c23f571b27f" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 18</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.95s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo19.jpg?alt=media&token=b0918bad-639b-45a8-b8a4-d778d6146d08" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo19.jpg?alt=media&token=b0918bad-639b-45a8-b8a4-d778d6146d08" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Dunes. Sossousvlei, Namibia.</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo20.jpg?alt=media&token=a0d1b35a-53f3-467d-89f4-df6d07016112" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo20.jpg?alt=media&token=a0d1b35a-53f3-467d-89f4-df6d07016112" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 20</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo21.jpg?alt=media&token=34e034d5-c631-4d4c-9e34-b9ddb8ca1684" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo21.jpg?alt=media&token=34e034d5-c631-4d4c-9e34-b9ddb8ca1684" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Portgual</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo22.jpg?alt=media&token=39b8d731-416c-423b-9d01-3deda18589f9" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo22.jpg?alt=media&token=39b8d731-416c-423b-9d01-3deda18589f9" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 20</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo23.jpg?alt=media&token=dbf02eb7-fda4-4685-b5e6-b4c44b482efd" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo23.jpg?alt=media&token=dbf02eb7-fda4-4685-b5e6-b4c44b482efd" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 20</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo24.jpg?alt=media&token=b3478ea1-3d05-42e0-a5eb-ea24c93e8de0" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo24.jpg?alt=media&token=b3478ea1-3d05-42e0-a5eb-ea24c93e8de0" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 20</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo25.jpg?alt=media&token=2b57728c-bda0-4295-9a8d-7e1baa663899" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo25.jpg?alt=media&token=2b57728c-bda0-4295-9a8d-7e1baa663899" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 20</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo26.jpg?alt=media&token=b607dcef-e700-41e9-a349-bc53f14fe216" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo26.jpg?alt=media&token=b607dcef-e700-41e9-a349-bc53f14fe216" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 20</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo27.jpg?alt=media&token=a5ac7791-db20-47b6-9871-6075bf9bc7c0" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo27.jpg?alt=media&token=a5ac7791-db20-47b6-9871-6075bf9bc7c0" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 20</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo28.jpg?alt=media&token=a5cdcac1-bbfd-483f-abb1-3af145d9ef62" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo28.jpg?alt=media&token=a5cdcac1-bbfd-483f-abb1-3af145d9ef62" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 20</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo29.jpg?alt=media&token=38636771-5d92-4bfe-8628-5520f7b7289a" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo29.jpg?alt=media&token=38636771-5d92-4bfe-8628-5520f7b7289a" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 20</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo30.jpg?alt=media&token=590f7584-3d61-4e22-9cf3-beb2d96a0443" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo30.jpg?alt=media&token=590f7584-3d61-4e22-9cf3-beb2d96a0443" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Fallen tree in Northern Portugal</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo31.jpg?alt=media&token=1c8899b3-42cb-4b3b-ba9e-b508fa3b94f6" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo31.jpg?alt=media&token=1c8899b3-42cb-4b3b-ba9e-b508fa3b94f6" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Project 20</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/KVL07885.jpg?alt=media&token=a9f14888-204e-420a-9c70-938807470fba" alt="Photography">
+                <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/KVL07885.jpg?alt=media&token=a9f14888-204e-420a-9c70-938807470fba" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Portraits</span>
                 </div>
@@ -915,7 +927,7 @@
         <!-- Video Gallery -->
         <div class="video-gallery hidden" id="videoGallery">
             <div class="video-item" style="animation-delay: 0.1s" onclick="playVideo(this)">
-                <video preload="metadata">
+                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo5.jpg?alt=media&token=9702673f-3fc5-4f54-ad22-0a4e69754ed1">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Andrea%20%26%20Martin.mp4?alt=media&token=10989b34-467b-4a6f-bb48-d08c6608499a" type="video/mp4">
                 </video>
                 <div class="play-icon"></div>
@@ -924,7 +936,7 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.2s" onclick="playVideo(this)">
-                <video preload="metadata">
+                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo10.jpg?alt=media&token=0afe6ef3-9ec1-4a55-b482-00784f40ef9d">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Calma_short_10s_no_sound.mp4?alt=media&token=1e9ce3ca-ff2c-42da-9293-07814159e2ad" type="video/mp4">
                 </video>
                 <div class="play-icon"></div>
@@ -933,7 +945,7 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.3s" onclick="playVideo(this)">
-                <video preload="metadata">
+                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo7.jpg?alt=media&token=be0b8e52-0d8a-43ce-b918-3c11c5ee4ef4">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Club%20reel%203.mp4?alt=media&token=a9eedd67-71e9-4730-9379-ebdc2fffba76" type="video/mp4">
                 </video>
                 <div class="play-icon"></div>
@@ -942,7 +954,7 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.4s" onclick="playVideo(this)">
-                <video preload="metadata">
+                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo15.jpg?alt=media&token=ffe99324-7d52-4387-a149-97fc8e38b7e2">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/CIS%2010s.mp4?alt=media&token=674d181a-0759-4ef7-aaf0-c50d8373495a" type="video/mp4">
                 </video>
                 <div class="play-icon"></div>
@@ -951,7 +963,7 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.6s" onclick="playVideo(this)">
-                <video preload="metadata">
+                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo12.jpg?alt=media&token=01c6e51b-0789-42bc-ac2e-d263884bc943">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/V%C3%A4stkusten%20-%20Loop%201min.mp4?alt=media&token=10da3865-7536-4499-9a73-41d5fa191b46" type="video/mp4">
                 </video>
                 <div class="play-icon"></div>
@@ -960,7 +972,7 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.7s" onclick="playVideo(this)">
-                <video preload="metadata">
+                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo21.jpg?alt=media&token=34e034d5-c631-4d4c-9e34-b9ddb8ca1684">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Portugal%20Reel%20-%20FINAL.mp4?alt=media&token=e35294d0-6cb4-4220-ac2e-c69a7789d2da" type="video/mp4">
                 </video>
                 <div class="play-icon"></div>
@@ -1181,6 +1193,17 @@
             if (e.key === 'Escape') {
                 closeLightbox();
                 closeContact();
+            }
+        });
+
+        // Lazy loading handler for smooth fade-in
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            img.addEventListener('load', function() {
+                this.classList.add('loaded');
+            });
+            // If already loaded (cached), add class immediately
+            if (img.complete) {
+                img.classList.add('loaded');
             }
         });
     </script>
