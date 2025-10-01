@@ -6,8 +6,6 @@
     <title>Victor Haugaard - Photography & Videography</title>
 
     <link rel="icon" type="image/png" sizes="32x32" href="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/favicon-32x32.png?alt=media&token=dc5f325d-8d39-4d73-9b24-ef8421796642">
-    <link rel="apple-touch-icon" sizes="180x180" href=https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/android-chrome-192x192.png?alt=media&token=91eadb57-f2d9-4fdb-87a4-da1aea9a2f5d">
-    <link rel="shortcut icon" href="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/favicon.ico?alt=media&token=ab6136e0-e16a-4a3d-b45f-9fe711a9c06c">
     <style>
         * {
             margin: 0;
@@ -142,7 +140,6 @@
             overflow: hidden;
         }
 
-        /* Hero Background Video/Image */
         .hero-background {
             position: absolute;
             top: 0;
@@ -159,7 +156,6 @@
             object-fit: cover;
         }
 
-        /* Dark overlay for better text readability */
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -204,7 +200,7 @@
             margin: 0 auto;
         }
 
-        /* Photo Gallery - Max 3 columns */
+        /* Photo Gallery */
         .photo-gallery {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -228,16 +224,11 @@
             animation: fadeInUp 0.8s ease forwards;
         }
 
-        /* Pattern: 1 big, 2 small, 1 tall - repeats every 4 items */
-        /* Big square (2x2) */
         .photo-item:nth-child(4n+1) {
             grid-column: span 2;
             grid-row: span 2;
         }
 
-        /* Two small squares stay default 1x1 */
-        
-        /* Tall vertical (1x2) */
         .photo-item:nth-child(4n+4) {
             grid-row: span 2;
             aspect-ratio: 1/2;
@@ -299,15 +290,15 @@
             animation: fadeInUp 0.8s ease forwards;
         }
 
-        .video-item img {
+        .video-item video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .video-item:hover img {
+        .video-item:hover video {
             transform: scale(1.05);
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .play-icon {
@@ -323,6 +314,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
+            pointer-events: none;
         }
 
         .video-item:hover .play-icon {
@@ -340,7 +332,146 @@
             margin-left: 5px;
         }
 
-        /* Contact Modal */
+        /* Photo Lightbox Modal */
+        .lightbox-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.98);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 3000;
+            padding: 20px;
+        }
+
+        .lightbox-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            max-width: 1200px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+            z-index: 3001;
+        }
+
+        .lightbox-close:hover {
+            opacity: 1;
+        }
+
+        .lightbox-close::before,
+        .lightbox-close::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 30px;
+            height: 2px;
+            background: #f5f5f5;
+        }
+
+        .lightbox-close::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .lightbox-close::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .lightbox-main-image {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .lightbox-main-image img {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+
+        .lightbox-info {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .lightbox-info h2 {
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .lightbox-info p {
+            opacity: 0.8;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        /* Infinite Carousel for Project Images */
+        .lightbox-gallery {
+            overflow: hidden;
+            margin-top: 30px;
+            position: relative;
+            width: 100%;
+            height: 150px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .lightbox-carousel {
+            display: flex;
+            gap: 15px;
+            animation: scroll-carousel 30s linear infinite;
+            width: fit-content;
+        }
+
+        .lightbox-carousel:hover {
+            animation-play-state: paused;
+        }
+
+        .lightbox-gallery img {
+            height: 150px;
+            width: auto;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.3s;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+
+        .lightbox-gallery img:hover {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        @keyframes scroll-carousel {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Contact Modal - SMALLER VERSION */
         .contact-modal {
             position: fixed;
             inset: 0;
@@ -361,8 +492,8 @@
 
         .modal-content {
             background: #111;
-            padding: 60px;
-            max-width: 500px;
+            padding: 40px;
+            max-width: 400px;
             width: 90%;
             position: relative;
         }
@@ -401,12 +532,11 @@
             transform: translate(-50%, -50%) rotate(-45deg);
         }
 
-        /* Profile Picture in Contact */
         .profile-picture {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            margin: 0 auto 30px;
+            margin: 0 auto 20px;
             overflow: hidden;
             background: #1a1a1a;
         }
@@ -418,17 +548,18 @@
         }
 
         .contact-info h2 {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 300;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             letter-spacing: 2px;
             text-align: center;
         }
 
         .contact-info p {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             opacity: 0.8;
             text-align: center;
+            font-size: 14px;
         }
 
         .contact-info a {
@@ -473,7 +604,6 @@
                 gap: 8px;
             }
 
-            /* Simplify pattern for mobile - just alternate between big and small */
             .photo-item:nth-child(4n+1) {
                 grid-column: span 2;
                 grid-row: span 1;
@@ -497,12 +627,33 @@
             }
 
             .modal-content {
-                padding: 40px 30px;
+                padding: 30px 20px;
             }
 
             .profile-picture {
-                width: 100px;
-                height: 100px;
+                width: 80px;
+                height: 80px;
+            }
+
+            .contact-info h2 {
+                font-size: 24px;
+            }
+
+            .lightbox-close {
+                top: 15px;
+                right: 15px;
+            }
+
+            .lightbox-info {
+                padding: 20px;
+            }
+
+            .lightbox-gallery {
+                height: 120px;
+            }
+
+            .lightbox-gallery img {
+                height: 120px;
             }
         }
     </style>
@@ -528,15 +679,10 @@
     </header>
 
     <section class="hero">
-        <!-- Hero Background - Choose either video or image -->
         <div class="hero-background">
-            <!-- For Video Background (uncomment and add your video) -->
             <video autoplay muted loop playsinline>
                 <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/hero-video.mp4?alt=media&token=5e2c1a42-7ebd-41d2-abf1-841779cc2169" type="video/mp4">
             </video>
-            
-            <!-- For Image Background -->
-            <!--<img src="images/hero-bg.jpg" alt="Hero background">-->
         </div>
         
         <div class="hero-overlay"></div>
@@ -550,19 +696,31 @@
     <div class="gallery-container">
         <!-- Photo Gallery -->
         <div class="photo-gallery" id="photoGallery">
-            <div class="photo-item" style="animation-delay: 0.05s">
+            <div class="photo-item" style="animation-delay: 0.05s" onclick="openLightbox('ericeria')">
                 <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo1.jpg?alt=media&token=d4acd7df-c946-49f9-a9dc-23f4ce8a9c66" alt="Photography">
                 <div class="photo-overlay">
-                    <span class="photo-title">Ericeria Surfing </span>
+                    <span class="photo-title">Ericeria Surfing</span>
                 </div>
             </div>
-            <div class="photo-item" style="animation-delay: 0.1s">
+            <div class="photo-item" style="animation-delay: 0.1s" onclick="openLightbox('tanzania')">
                 <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo2.jpg?alt=media&token=33b008db-e557-4a99-b025-f2daf30b484a" alt="Photography">
                 <div class="photo-overlay">
-                    <span class="photo-title">Cooking Ugali at Sokoine Primary School, Tanzania.</span>
+                    <span class="photo-title">Cooking Ugali - Tanzania</span>
                 </div>
             </div>
-            <div class="photo-item" style="animation-delay: 0.15s">
+            <div class="photo-item" style="animation-delay: 0.15s" onclick="openLightbox('portugal-tree')">
+                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo3.jpg?alt=media&token=9e822dc9-3cd3-4958-9298-7144463bc8da" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Northern Portugal</span>
+                </div>
+            </div>
+            <div class="photo-item" style="animation-delay: 0.2s" onclick="openLightbox('azores')">
+                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo4.jpg?alt=media&token=8ecd0e2c-7963-4851-bcf4-85c601bb5d17" alt="Photography">
+                <div class="photo-overlay">
+                    <span class="photo-title">Azores Islands</span>
+                </div>
+            </div>
+                        <div class="photo-item" style="animation-delay: 0.15s">
                 <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo3.jpg?alt=media&token=9e822dc9-3cd3-4958-9298-7144463bc8da" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Lonely fallen tree in Northern Portugal</span>
@@ -746,62 +904,68 @@
 
         <!-- Video Gallery -->
         <div class="video-gallery hidden" id="videoGallery">
-            <div class="video-item" style="animation-delay: 0.1s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Andrea%20%26%20Martin.mp4?alt=media&token=10989b34-467b-4a6f-bb48-d08c6608499a" alt="Video project">
+            <div class="video-item" style="animation-delay: 0.1s" onclick="playVideo(this)">
+                <video preload="metadata">
+                    <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Andrea%20%26%20Martin.mp4?alt=media&token=10989b34-467b-4a6f-bb48-d08c6608499a" type="video/mp4">
+                </video>
                 <div class="play-icon"></div>
                 <div class="photo-overlay">
                     <span class="photo-title">Wedding Movies</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.2s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Calma_short_10s_no_sound.mp4?alt=media&token=1e9ce3ca-ff2c-42da-9293-07814159e2ad" alt="Video project">
+            <div class="video-item" style="animation-delay: 0.2s" onclick="playVideo(this)">
+                <video preload="metadata">
+                    <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Calma_short_10s_no_sound.mp4?alt=media&token=1e9ce3ca-ff2c-42da-9293-07814159e2ad" type="video/mp4">
+                </video>
                 <div class="play-icon"></div>
                 <div class="photo-overlay">
                     <span class="photo-title">Restaurant Shooting</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.3s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Club%20reel%203.mp4?alt=media&token=a9eedd67-71e9-4730-9379-ebdc2fffba76" alt="Video project">
+            <div class="video-item" style="animation-delay: 0.3s" onclick="playVideo(this)">
+                <video preload="metadata">
+                    <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Club%20reel%203.mp4?alt=media&token=a9eedd67-71e9-4730-9379-ebdc2fffba76" type="video/mp4">
+                </video>
                 <div class="play-icon"></div>
                 <div class="photo-overlay">
                     <span class="photo-title">Club Reels</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.4s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/CIS%2010s.mp4?alt=media&token=674d181a-0759-4ef7-aaf0-c50d8373495a" alt="Video project">
+            <div class="video-item" style="animation-delay: 0.4s" onclick="playVideo(this)">
+                <video preload="metadata">
+                    <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/CIS%2010s.mp4?alt=media&token=674d181a-0759-4ef7-aaf0-c50d8373495a" type="video/mp4">
+                </video>
                 <div class="play-icon"></div>
                 <div class="photo-overlay">
                     <span class="photo-title">CIS - Chalmers Idrottssällskap</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.5s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Calma_short_10s_no_sound.mp4?alt=media&token=1e9ce3ca-ff2c-42da-9293-07814159e2ad" alt="Video project">
-                <div class="play-icon"></div>
-                <div class="photo-overlay">
-                    <span class="photo-title">Video Project 05</span>
-                </div>
-            </div>
-            <div class="video-item" style="animation-delay: 0.6s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/V%C3%A4stkusten%20-%20Loop%201min.mp4?alt=media&token=10da3865-7536-4499-9a73-41d5fa191b46" alt="Video project">
+            <div class="video-item" style="animation-delay: 0.6s" onclick="playVideo(this)">
+                <video preload="metadata">
+                    <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/V%C3%A4stkusten%20-%20Loop%201min.mp4?alt=media&token=10da3865-7536-4499-9a73-41d5fa191b46" type="video/mp4">
+                </video>
                 <div class="play-icon"></div>
                 <div class="photo-overlay">
                     <span class="photo-title">Västkusten Presents</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.7s">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Portugal%20Reel%20-%20FINAL.mp4?alt=media&token=e35294d0-6cb4-4220-ac2e-c69a7789d2da" alt="Video project">
+            <div class="video-item" style="animation-delay: 0.7s" onclick="playVideo(this)">
+                <video preload="metadata">
+                    <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Portugal%20Reel%20-%20FINAL.mp4?alt=media&token=e35294d0-6cb4-4220-ac2e-c69a7789d2da" type="video/mp4">
+                </video>
                 <div class="play-icon"></div>
                 <div class="photo-overlay">
                     <span class="photo-title">Portugal After Movie 2021</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.8s">
-                <img src="images/video8.jpg" alt="Video project">
-                <div class="play-icon"></div>
-                <div class="photo-overlay">
-                    <span class="photo-title">Video Project 08</span>
-                </div>
-            </div>
+        </div>
+    </div>
+
+    <!-- Photo Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <div class="lightbox-close" onclick="closeLightbox()"></div>
+        <div class="lightbox-content" id="lightboxContent">
+            <!-- Content will be dynamically inserted -->
         </div>
     </div>
 
@@ -828,6 +992,46 @@
     </div>
 
     <script>
+        // Project data with multiple images
+        const projectData = {
+            'ericeria': {
+                title: 'Ericeria Surfing',
+                location: 'Ericeria, Portugal',
+                description: 'Capturing the raw energy and beauty of Atlantic surf culture in one of Europe\'s premier surfing destinations.',
+                images: [
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo1.jpg?alt=media&token=d4acd7df-c946-49f9-a9dc-23f4ce8a9c66',
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo21.jpg?alt=media&token=34e034d5-c631-4d4c-9e34-b9ddb8ca1684',
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo22.jpg?alt=media&token=39b8d731-416c-423b-9d01-3deda18589f9',
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo23.jpg?alt=media&token=dbf02eb7-fda4-4685-b5e6-b4c44b482efd'
+                ]
+            },
+            'tanzania': {
+                title: 'Sokoine Primary School',
+                location: 'Tanzania',
+                description: 'Documentary photography capturing daily life and education at Sokoine Primary School, showcasing the community\'s resilience and warmth.',
+                images: [
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo2.jpg?alt=media&token=33b008db-e557-4a99-b025-f2daf30b484a'
+                ]
+            },
+            'portugal-tree': {
+                title: 'Northern Portugal Landscapes',
+                location: 'Northern Portugal',
+                description: 'Minimalist landscape photography exploring the solitude and beauty of Portugal\'s northern wilderness.',
+                images: [
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo3.jpg?alt=media&token=9e822dc9-3cd3-4958-9298-7144463bc8da',
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo30.jpg?alt=media&token=590f7584-3d61-4e22-9cf3-beb2d96a0443'
+                ]
+            },
+            'azores': {
+                title: 'Azores Islands',
+                location: 'Azores, Portugal',
+                description: 'Exploring the unique volcanic landscape and traditional wine-growing culture of the Azores archipelago.',
+                images: [
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo4.jpg?alt=media&token=8ecd0e2c-7963-4851-bcf4-85c601bb5d17'
+                ]
+            }
+        };
+
         // Toggle between Still and Video
         const toggleSwitch = document.getElementById('toggleSwitch');
         const stillOption = document.getElementById('stillOption');
@@ -847,7 +1051,6 @@
                 photoGallery.classList.add('hidden');
                 videoGallery.classList.remove('hidden');
                 
-                // Reset animations for video gallery
                 videoGallery.querySelectorAll('.video-item').forEach((item, index) => {
                     item.style.animation = 'none';
                     setTimeout(() => {
@@ -861,7 +1064,6 @@
                 photoGallery.classList.remove('hidden');
                 videoGallery.classList.add('hidden');
                 
-                // Reset animations for photo gallery
                 photoGallery.querySelectorAll('.photo-item').forEach((item, index) => {
                     item.style.animation = 'none';
                     setTimeout(() => {
@@ -871,7 +1073,6 @@
             }
         });
 
-        // Click on options to toggle
         stillOption.addEventListener('click', () => {
             if (isVideo) toggleSwitch.click();
         });
@@ -880,46 +1081,98 @@
             if (!isVideo) toggleSwitch.click();
         });
 
+        // Play video function
+        function playVideo(element) {
+            const video = element.querySelector('video');
+            const playIcon = element.querySelector('.play-icon');
+            
+            if (video.paused) {
+                video.play();
+                video.setAttribute('controls', 'controls');
+                playIcon.style.opacity = '0';
+            } else {
+                video.pause();
+                playIcon.style.opacity = '1';
+            }
+        }
+
+        // Lightbox functions with infinite carousel
+        function openLightbox(projectId) {
+            const modal = document.getElementById('lightboxModal');
+            const content = document.getElementById('lightboxContent');
+            const project = projectData[projectId];
+            
+            if (!project) return;
+            
+            let galleryHTML = '';
+            if (project.images.length > 1) {
+                // Create carousel with duplicated images for infinite scroll
+                const allImages = [...project.images, ...project.images];
+                
+                galleryHTML = `
+                    <div class="lightbox-gallery">
+                        <div class="lightbox-carousel">
+                            ${allImages.map(img => 
+                                `<img src="${img}" alt="${project.title}" onclick="changeMainImage('${img}')">`
+                            ).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            content.innerHTML = `
+                <div class="lightbox-main-image">
+                    <img src="${project.images[0]}" alt="${project.title}" id="mainLightboxImage">
+                </div>
+                <div class="lightbox-info">
+                    <h2>${project.title}</h2>
+                    <p><strong>Location:</strong> ${project.location}</p>
+                    <p>${project.description}</p>
+                    ${galleryHTML}
+                </div>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function changeMainImage(src) {
+            document.getElementById('mainLightboxImage').src = src;
+        }
+
         // Contact Modal
         function openContact() {
             document.getElementById('contactModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeContact() {
             document.getElementById('contactModal').classList.remove('active');
+            document.body.style.overflow = '';
         }
 
-        // Close modal on background click
+        // Close modals on background click
         document.getElementById('contactModal').addEventListener('click', (e) => {
-            if (e.target === e.currentTarget) {
-                closeContact();
-            }
+            if (e.target === e.currentTarget) closeContact();
         });
 
-        // Smooth scroll effect on gallery items
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        document.getElementById('lightboxModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeLightbox();
+        });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all gallery items
-        document.querySelectorAll('.photo-item, .video-item').forEach(item => {
-            observer.observe(item);
+        // Escape key to close modals
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+                closeContact();
+            }
         });
     </script>
 </body>
 </html>
-
-
-
-
-
