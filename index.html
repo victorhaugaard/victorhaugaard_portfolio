@@ -609,7 +609,52 @@
         /* Responsive */
         @media (max-width: 768px) {
             header {
-                padding: 20px;
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 16px;
+                letter-spacing: 2px;
+            }
+
+            .subtitle {
+                font-size: 9px;
+                letter-spacing: 1px;
+                margin-top: 3px;
+            }
+
+            .nav-controls {
+                gap: 15px;
+            }
+
+            .toggle-container {
+                padding: 5px 12px;
+                gap: 10px;
+            }
+
+            .toggle-option {
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+
+            .toggle-switch {
+                width: 40px;
+                height: 20px;
+            }
+
+            .toggle-slider {
+                width: 16px;
+                height: 16px;
+            }
+
+            .toggle-switch.video .toggle-slider {
+                transform: translateX(20px);
+            }
+
+            .contact-btn {
+                font-size: 10px;
+                letter-spacing: 1px;
+                padding: 8px 15px;
             }
 
             .hero-title {
@@ -676,6 +721,55 @@
 
             .lightbox-gallery img {
                 height: 120px;
+            }
+        }
+
+        /* Extra small screens (phones < 400px) */
+        @media (max-width: 400px) {
+            header {
+                padding: 12px 15px;
+            }
+
+            .logo {
+                font-size: 14px;
+                letter-spacing: 1.5px;
+            }
+
+            .subtitle {
+                font-size: 8px;
+                letter-spacing: 0.5px;
+            }
+
+            .nav-controls {
+                gap: 10px;
+            }
+
+            .toggle-container {
+                padding: 4px 10px;
+                gap: 8px;
+            }
+
+            .toggle-option {
+                font-size: 9px;
+            }
+
+            .toggle-switch {
+                width: 35px;
+                height: 18px;
+            }
+
+            .toggle-slider {
+                width: 14px;
+                height: 14px;
+            }
+
+            .toggle-switch.video .toggle-slider {
+                transform: translateX(17px);
+            }
+
+            .contact-btn {
+                font-size: 9px;
+                padding: 7px 12px;
             }
         }
     </style>
@@ -1008,7 +1102,6 @@
                 <p>Phone: <a href="tel:+4741303593">+47 413 03 593</a></p>
                 <br>
                 <p>Instagram: <a href="#">@victorhaugaard</a></p>
-                <p>Vimeo: <a href="#">vimeo.com/victorhaugaard</a></p>
             </div>
         </div>
     </div>
