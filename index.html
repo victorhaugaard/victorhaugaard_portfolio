@@ -1247,6 +1247,7 @@
             },
         };
 
+
         // Toggle between Still and Video
         const toggleSwitch = document.getElementById('toggleSwitch');
         const stillOption = document.getElementById('stillOption');
@@ -1296,20 +1297,72 @@
             if (!isVideo) toggleSwitch.click();
         });
 
-        // Play video function
+        // Play video function with auto-return to poster
         function playVideo(element) {
             const video = element.querySelector('video');
             const playIcon = element.querySelector('.play-icon');
+            let pauseTimeout;
             
             if (video.paused) {
                 video.play();
                 video.setAttribute('controls', 'controls');
                 playIcon.style.opacity = '0';
+                
+                // Return to poster when video ends
+                video.addEventListener('ended', function() {
+                    resetVideoToPoster(element);
+                });
+                
+                // Return to poster after 3 seconds of being paused
+                video.addEventListener('pause', function() {
+                    if (!video.ended) {
+                        pauseTimeout = setTimeout(() => {
+                            if (video.paused && !video.ended) {
+                                resetVideoToPoster(element);
+                            }
+                        }, 3000);
+                    }
+                });
+                
+                // Clear timeout if video resumes
+                video.addEventListener('play', function() {
+                    clearTimeout(pauseTimeout);
+                });
+                
             } else {
                 video.pause();
                 playIcon.style.opacity = '1';
             }
         }
+
+        // Reset video to poster state
+        function resetVideoToPoster(element) {
+            const video = element.querySelector('video');
+            const playIcon = element.querySelector('.play-icon');
+            
+            video.pause();
+            video.currentTime = 0;
+            video.removeAttribute('controls');
+            video.load(); // Reload to show poster
+            playIcon.style.opacity = '1';
+        }
+
+        // Intersection Observer to reset videos when scrolled out of view
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target.querySelector('video');
+                if (!entry.isIntersecting && !video.paused) {
+                    resetVideoToPoster(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        // Observe all video items
+        document.querySelectorAll('.video-item').forEach(item => {
+            videoObserver.observe(item);
+        });
 
         // Lightbox with FIXED infinite carousel
         function openLightbox(projectId) {
@@ -1402,8 +1455,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
