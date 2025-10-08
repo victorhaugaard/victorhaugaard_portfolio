@@ -865,7 +865,7 @@
             <div class="photo-item" style="animation-delay: 0.1s" onclick="openLightbox('portraits')">
                 <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/PER04754-3.jpg?alt=media&token=15616d32-06d5-466e-8b68-a9cc37f7cce9" alt="Photography">
                 <div class="photo-overlay">
-                    <span class="photo-title">Portraits & Profiles</span>
+                    <span class="photo-title">People</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.15s" onclick="openLightbox('street')">
@@ -877,7 +877,7 @@
             <div class="photo-item" style="animation-delay: 0.15s" onclick="openLightbox('abstract')">
                 <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo18.jpg?alt=media&token=0506df2c-ba98-4c47-b80d-4c23f571b27f" alt="Photography">
                 <div class="photo-overlay">
-                    <span class="photo-title">Abstract Photography</span>
+                    <span class="photo-title">Abstract</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.2s" onclick="openLightbox('azores')">
@@ -889,7 +889,7 @@
             <div class="photo-item" style="animation-delay: 0.05s" onclick="openLightbox('sports')">
                 <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo1.jpg?alt=media&token=d4acd7df-c946-49f9-a9dc-23f4ce8a9c66" alt="Photography">
                 <div class="photo-overlay">
-                    <span class="photo-title">Sports</span>
+                    <span class="photo-title">Action</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.15s" onclick="openLightbox('weddings')">
@@ -952,10 +952,10 @@
                     <span class="photo-title">Project 13</span>
                 </div>
             </div>
-            <div class="photo-item" style="animation-delay: 0.7s">
+            <div class="photo-item" style="animation-delay: 0.7s" onclick="openLightbox('animals')">
                 <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo14.jpg?alt=media&token=25c9f8f6-b6d8-4fb7-804d-ff829d1782f5" alt="Photography">
                 <div class="photo-overlay">
-                    <span class="photo-title">Project 14</span>
+                    <span class="photo-title">David Attenbourough Insired</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.75s">
@@ -1012,10 +1012,10 @@
                     <span class="photo-title">Project 20</span>
                 </div>
             </div>
-            <div class="photo-item" style="animation-delay: 1s">
+            <div class="photo-item" style="animation-delay: 1s" onclick="openLightbox('animals')">
                 <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo25.jpg?alt=media&token=2b57728c-bda0-4295-9a8d-7e1baa663899" alt="Photography">
                 <div class="photo-overlay">
-                    <span class="photo-title">Project 20</span>
+                    <span class="photo-title">Animals</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
@@ -1124,7 +1124,7 @@
                 </video>
                 <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
                 <div class="photo-overlay" onclick="openVideoLightbox('calma-restaurant')">
-                    <span class="photo-title">Restaurant Shooting</span>
+                    <span class="photo-title">Calma Tapas Bar</span>
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.3s">
@@ -1336,7 +1336,9 @@
                 description: 'Restaurant product photo shoot for Calma Tapas Bar in Gothenburg.',
                 images: [
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/EEB02856.jpg?alt=media&token=9410da99-6dab-4dda-b93b-c04fe9341c3f',
-                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/EEB02841.jpg?alt=media&token=93e8d153-75df-4fcf-b481-bdea3a628f4a'
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/EEB02841.jpg?alt=media&token=93e8d153-75df-4fcf-b481-bdea3a628f4a',
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/calmaproduct2.png?alt=media&token=b5dd8606-58b4-4c9a-a96c-13ed6328a0b8',
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo10.jpg?alt=media&token=0afe6ef3-9ec1-4a55-b482-00784f40ef9d'
                 ]
             },
             'portraits': {
@@ -1393,6 +1395,20 @@
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/br%C3%B6llp5.jpg?alt=media&token=9f8639c2-6114-4f60-ad45-60173de86376',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/EEB00519.jpg?alt=media&token=986a6bfb-4e2b-42a5-8c77-db1d26fb9db7'
                     
+                ]
+            },
+            'animals': {
+                title: 'David Attenborough Inspired Shots',
+                location: '',
+                description: 'Wild animal shooting in places such as Serengeti in Tanzania, Etosha in Botswana and rural places in southern Africa.',
+                images: [
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/PER05098.jpg?alt=media&token=2bc4c115-1903-4802-adda-088053aa9005',
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/PER05101.jpg?alt=media&token=adc0b7be-faf1-44b7-87e9-54739b2e4696',
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/PER03204.jpg?alt=media&token=add33421-5204-4217-bc98-84bd6ed7a203',
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Serengeti-2_03.jpg?alt=media&token=4dad2b06-b73f-46b0-a316-562e2682b159',
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Serengeti-2_02.jpg?alt=media&token=dc571f88-088f-48d4-b617-3fa5379f3f3a',
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Ngorongoro_04.jpg?alt=media&token=ae75137d-ad9a-4cfa-a937-f22e56a19d85',
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo25.jpg?alt=media&token=2b57728c-bda0-4295-9a8d-7e1baa663899'
                 ]
             }
         };
@@ -1631,6 +1647,7 @@
     </script>
 </body>
 </html>
+
 
 
 
