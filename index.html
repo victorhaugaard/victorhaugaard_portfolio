@@ -277,6 +277,7 @@
             display: flex;
             align-items: flex-end;
             padding: 30px;
+            cursor: pointer;
         }
 
         .photo-item:hover .photo-overlay {
@@ -344,7 +345,8 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
-            pointer-events: none;
+            cursor: pointer;
+            z-index: 10;
         }
 
         .video-item:hover .play-icon {
@@ -730,6 +732,23 @@
             .lightbox-gallery img {
                 height: 120px;
             }
+
+            .photo-title {
+                font-size: 11px;
+                letter-spacing: 1px;
+            }
+
+            .play-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .play-icon::after {
+                border-left: 15px solid #0a0a0a;
+                border-top: 9px solid transparent;
+                border-bottom: 9px solid transparent;
+                margin-left: 4px;
+            }
         }
 
         /* Extra small screens (phones < 400px) */
@@ -779,6 +798,23 @@
                 font-size: 9px;
                 padding: 7px 12px;
             }
+
+            .photo-title {
+                font-size: 10px;
+                letter-spacing: 0.5px;
+            }
+
+            .play-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .play-icon::after {
+                border-left: 12px solid #0a0a0a;
+                border-top: 7px solid transparent;
+                border-bottom: 7px solid transparent;
+                margin-left: 3px;
+            }
         }
     </style>
 </head>
@@ -812,8 +848,8 @@
         <div class="hero-overlay"></div>
         
         <div class="hero-content">
-            <h1 class="hero-title">Victors Visuella Verkstad</h1>
-            <p class="hero-subtitle">Photography & Cinematography</p>
+            <h1 class="hero-title">Victor Haugaard</h1>
+            <p class="hero-subtitle">Photographer & Cinematographer</p>
         </div>
     </section>
 
@@ -1028,102 +1064,102 @@
 
         <!-- Video Gallery -->
         <div class="video-gallery hidden" id="videoGallery">
-            <div class="video-item" style="animation-delay: 0.1s" onclick="playVideo(this)">
+            <div class="video-item" style="animation-delay: 0.1s">
                 <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/antonjosefinframe.png?alt=media&token=51bbe53e-1d49-49fd-8a13-32c8cc831c94">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Anton%20%26%20Josefine%20-%2002.07.2022.mp4?alt=media&token=583abb0e-edb2-4053-9433-cc834059064d" type="video/mp4">
                 </video>
-                <div class="play-icon"></div>
-                <div class="photo-overlay">
+                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
+                <div class="photo-overlay" onclick="openVideoLightbox('wedding-anton-josefine')">
                     <span class="photo-title">Wedding Movie - Anton & Josefin</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.1s" onclick="playVideo(this)">
+            <div class="video-item" style="animation-delay: 0.1s">
                 <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/EEB03249.jpg?alt=media&token=0052619b-2bf9-4389-9ac4-534c02b74d3d">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Salem%20%26%20Nermina%20--%2029.04.2023.mp4?alt=media&token=0c924ca7-b67b-458d-8f71-b13da784333a" type="video/mp4">
                 </video>
-                <div class="play-icon"></div>
-                <div class="photo-overlay">
+                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
+                <div class="photo-overlay" onclick="openVideoLightbox('wedding-salem-nermina')">
                     <span class="photo-title">Wedding Movie - Salem & Nermina</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.1s" onclick="playVideo(this)">
+            <div class="video-item" style="animation-delay: 0.1s">
                 <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/adamalexandra.jpg?alt=media&token=1e07c7c6-d842-46c2-b228-0460df5acd35">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Adam%20%26%20Alexandra%20-%204K.mp4?alt=media&token=461ae951-d1e9-4a8a-b942-ca46678d56d3" type="video/mp4">
                 </video>
-                <div class="play-icon"></div>
-                <div class="photo-overlay">
+                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
+                <div class="photo-overlay" onclick="openVideoLightbox('wedding-adam-alexandra')">
                     <span class="photo-title">Wedding Movie - Adam & Alexandra</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.1s" onclick="playVideo(this)">
+            <div class="video-item" style="animation-delay: 0.1s">
                 <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/SUD09419.jpg?alt=media&token=15a4c608-6807-4696-89fe-efa9176f1de3">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Spitzkoppe.mp4?alt=media&token=58ac6d01-d9a3-4722-aa13-ea035d6e975c" type="video/mp4">
                 </video>
-                <div class="play-icon"></div>
-                <div class="photo-overlay">
+                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
+                <div class="photo-overlay" onclick="openVideoLightbox('spitzkoppe')">
                     <span class="photo-title">Spitzkoppe, Namibia</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.1s" onclick="playVideo(this)">
+            <div class="video-item" style="animation-delay: 0.1s">
                 <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Sokoine-PS_09.jpg?alt=media&token=ecd55c89-b455-4772-9c2f-1977164652c2">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Sokoine%20Reel.mp4?alt=media&token=74d4ab11-20c3-45c6-95a3-d9df86677989" type="video/mp4">
                 </video>
-                <div class="play-icon"></div>
-                <div class="photo-overlay">
+                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
+                <div class="photo-overlay" onclick="openVideoLightbox('sokoine-reel')">
                     <span class="photo-title">Sokoine Primary School</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.1s" onclick="playVideo(this)">
+            <div class="video-item" style="animation-delay: 0.1s">
                 <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/andreamartin.png?alt=media&token=9707bcf4-debb-460b-ab2c-1e7076c64005">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Andrea%20%26%20Martin.mp4?alt=media&token=10989b34-467b-4a6f-bb48-d08c6608499a" type="video/mp4">
                 </video>
-                <div class="play-icon"></div>
-                <div class="photo-overlay">
+                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
+                <div class="photo-overlay" onclick="openVideoLightbox('wedding-andrea-martin')">
                     <span class="photo-title">Wedding Movie - Andrea & Martin</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.2s" onclick="playVideo(this)">
+            <div class="video-item" style="animation-delay: 0.2s">
                 <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo10.jpg?alt=media&token=0afe6ef3-9ec1-4a55-b482-00784f40ef9d">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Calma_short_10s_no_sound.mp4?alt=media&token=1e9ce3ca-ff2c-42da-9293-07814159e2ad" type="video/mp4">
                 </video>
-                <div class="play-icon"></div>
-                <div class="photo-overlay">
+                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
+                <div class="photo-overlay" onclick="openVideoLightbox('calma-restaurant')">
                     <span class="photo-title">Restaurant Shooting</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.3s" onclick="playVideo(this)">
+            <div class="video-item" style="animation-delay: 0.3s">
                 <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo7.jpg?alt=media&token=be0b8e52-0d8a-43ce-b918-3c11c5ee4ef4">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Club%20reel%203.mp4?alt=media&token=a9eedd67-71e9-4730-9379-ebdc2fffba76" type="video/mp4">
                 </video>
-                <div class="play-icon"></div>
-                <div class="photo-overlay">
+                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
+                <div class="photo-overlay" onclick="openVideoLightbox('club-reels')">
                     <span class="photo-title">Club Reels</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.4s" onclick="playVideo(this)">
+            <div class="video-item" style="animation-delay: 0.4s">
                 <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo15.jpg?alt=media&token=ffe99324-7d52-4387-a149-97fc8e38b7e2">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/CIS%2010s.mp4?alt=media&token=674d181a-0759-4ef7-aaf0-c50d8373495a" type="video/mp4">
                 </video>
-                <div class="play-icon"></div>
-                <div class="photo-overlay">
+                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
+                <div class="photo-overlay" onclick="openVideoLightbox('cis')">
                     <span class="photo-title">CIS - Chalmers Idrottssällskap</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.6s" onclick="playVideo(this)">
+            <div class="video-item" style="animation-delay: 0.6s">
                 <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo12.jpg?alt=media&token=01c6e51b-0789-42bc-ac2e-d263884bc943">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/V%C3%A4stkusten%20-%20Loop%201min.mp4?alt=media&token=10da3865-7536-4499-9a73-41d5fa191b46" type="video/mp4">
                 </video>
-                <div class="play-icon"></div>
-                <div class="photo-overlay">
+                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
+                <div class="photo-overlay" onclick="openVideoLightbox('vastkusten')">
                     <span class="photo-title">Västkusten Presents</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.7s" onclick="playVideo(this)">
+            <div class="video-item" style="animation-delay: 0.7s">
                 <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/INSTA.jpg?alt=media&token=33d7bef4-dc4e-4d9d-94c8-103c533fcff0">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Portugal%20Reel%20-%20FINAL.mp4?alt=media&token=e35294d0-6cb4-4220-ac2e-c69a7789d2da" type="video/mp4">
                 </video>
-                <div class="play-icon"></div>
-                <div class="photo-overlay">
+                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
+                <div class="photo-overlay" onclick="openVideoLightbox('portugal-aftermovie')">
                     <span class="photo-title">Portugal After Movie 2021</span>
                 </div>
             </div>
@@ -1154,13 +1190,104 @@
                 <p>Email: <a href="mailto:victorhaugaard@gmail.com">victorhaugaard@gmail.com</a></p>
                 <p>Phone: <a href="tel:+4741303593">+47 413 03 593</a></p>
                 <br>
-                <p>Instagram: <a href="#">@victorhaugaard</a></p>
-                <p>Vimeo: <a href="#">vimeo.com/victorhaugaard</a></p>
+                <p>Instagram: <a href="https://instagram.com/victorhaugaard" target="_blank">@victorhaugaard</a></p>
             </div>
         </div>
     </div>
 
     <script>
+        // Video project data
+        const videoData = {
+            'wedding-anton-josefine': {
+                title: 'Wedding Movie - Anton & Josefin',
+                location: 'Gothenburg, Sweden',
+                date: '02.07.2022',
+                description: 'A cinematic celebration of love capturing Anton and Josefin\'s special day, from intimate moments to joyful celebrations with family and friends.',
+                videoSrc: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Anton%20%26%20Josefine%20-%2002.07.2022.mp4?alt=media&token=583abb0e-edb2-4053-9433-cc834059064d',
+                poster: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/antonjosefinframe.png?alt=media&token=51bbe53e-1d49-49fd-8a13-32c8cc831c94'
+            },
+            'wedding-salem-nermina': {
+                title: 'Wedding Movie - Salem & Nermina',
+                location: 'Gothenburg, Sweden',
+                date: '29.04.2023',
+                description: 'An emotional journey through Salem and Nermina\'s wedding day, highlighting the beautiful blend of traditions and modern celebration.',
+                videoSrc: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Salem%20%26%20Nermina%20--%2029.04.2023.mp4?alt=media&token=0c924ca7-b67b-458d-8f71-b13da784333a',
+                poster: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/EEB03249.jpg?alt=media&token=0052619b-2bf9-4389-9ac4-534c02b74d3d'
+            },
+            'wedding-adam-alexandra': {
+                title: 'Wedding Movie - Adam & Alexandra',
+                location: 'Sweden',
+                date: '2023',
+                description: 'A stunning 4K wedding film capturing the romance and excitement of Adam and Alexandra\'s wedding celebration.',
+                videoSrc: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Adam%20%26%20Alexandra%20-%204K.mp4?alt=media&token=461ae951-d1e9-4a8a-b942-ca46678d56d3',
+                poster: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/adamalexandra.jpg?alt=media&token=1e07c7c6-d842-46c2-b228-0460df5acd35'
+            },
+            'spitzkoppe': {
+                title: 'Spitzkoppe, Namibia',
+                location: 'Spitzkoppe, Namibia',
+                date: '2023',
+                description: 'Exploring the dramatic granite peaks and ancient rock formations of Spitzkoppe, known as the "Matterhorn of Namibia."',
+                videoSrc: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Spitzkoppe.mp4?alt=media&token=58ac6d01-d9a3-4722-aa13-ea035d6e975c',
+                poster: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/SUD09419.jpg?alt=media&token=15a4c608-6807-4696-89fe-efa9176f1de3'
+            },
+            'sokoine-reel': {
+                title: 'Sokoine Primary School',
+                location: 'Tanzania',
+                date: '2023',
+                description: 'A short documentary reel showcasing life and education at Sokoine Primary School, celebrating the students, teachers, and community.',
+                videoSrc: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Sokoine%20Reel.mp4?alt=media&token=74d4ab11-20c3-45c6-95a3-d9df86677989',
+                poster: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Sokoine-PS_09.jpg?alt=media&token=ecd55c89-b455-4772-9c2f-1977164652c2'
+            },
+            'wedding-andrea-martin': {
+                title: 'Wedding Movie - Andrea & Martin',
+                location: 'Sweden',
+                date: '2023',
+                description: 'A heartfelt wedding film capturing the love story of Andrea and Martin through cinematic storytelling.',
+                videoSrc: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Andrea%20%26%20Martin.mp4?alt=media&token=10989b34-467b-4a6f-bb48-d08c6608499a',
+                poster: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/andreamartin.png?alt=media&token=9707bcf4-debb-460b-ab2c-1e7076c64005'
+            },
+            'calma-restaurant': {
+                title: 'Restaurant Shooting',
+                location: 'Calma Tapas Bar, Gothenburg',
+                date: '2023',
+                description: 'Dynamic restaurant and bar videography showcasing the atmosphere, food, and energy of Calma Tapas Bar.',
+                videoSrc: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Calma_short_10s_no_sound.mp4?alt=media&token=1e9ce3ca-ff2c-42da-9293-07814159e2ad',
+                poster: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo10.jpg?alt=media&token=0afe6ef3-9ec1-4a55-b482-00784f40ef9d'
+            },
+            'club-reels': {
+                title: 'Club Reels',
+                location: 'Gothenburg, Sweden',
+                date: '2023',
+                description: 'High-energy videography capturing the vibrant nightlife and club culture through dynamic cinematography.',
+                videoSrc: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Club%20reel%203.mp4?alt=media&token=a9eedd67-71e9-4730-9379-ebdc2fffba76',
+                poster: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo7.jpg?alt=media&token=be0b8e52-0d8a-43ce-b918-3c11c5ee4ef4'
+            },
+            'cis': {
+                title: 'CIS - Chalmers Idrottssällskap',
+                location: 'Gothenburg, Sweden',
+                date: '2023',
+                description: 'Sports club promotional video showcasing the activities and community of Chalmers Sports Association.',
+                videoSrc: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/CIS%2010s.mp4?alt=media&token=674d181a-0759-4ef7-aaf0-c50d8373495a',
+                poster: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo15.jpg?alt=media&token=ffe99324-7d52-4387-a149-97fc8e38b7e2'
+            },
+            'vastkusten': {
+                title: 'Västkusten Presents',
+                location: 'West Coast, Sweden',
+                date: '2023',
+                description: 'Promotional content for Västkusten, capturing the essence of Swedish west coast culture and lifestyle.',
+                videoSrc: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/V%C3%A4stkusten%20-%20Loop%201min.mp4?alt=media&token=10da3865-7536-4499-9a73-41d5fa191b46',
+                poster: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo12.jpg?alt=media&token=01c6e51b-0789-42bc-ac2e-d263884bc943'
+            },
+            'portugal-aftermovie': {
+                title: 'Portugal After Movie 2021',
+                location: 'Portugal',
+                date: '2021',
+                description: 'A travel aftermovie capturing the beauty, culture, and adventures experienced throughout Portugal.',
+                videoSrc: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Portugal%20Reel%20-%20FINAL.mp4?alt=media&token=e35294d0-6cb4-4220-ac2e-c69a7789d2da',
+                poster: 'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/INSTA.jpg?alt=media&token=33d7bef4-dc4e-4d9d-94c8-103c533fcff0'
+            }
+        };
+
         // Project data with multiple images
         const projectData = {
             'sports': {
@@ -1306,7 +1433,8 @@
         });
 
         // Play video function with auto-return to poster
-        function playVideo(element) {
+        function playVideo(event, element) {
+            event.stopPropagation(); // Prevent triggering the overlay click
             const video = element.querySelector('video');
             const playIcon = element.querySelector('.play-icon');
             let pauseTimeout;
@@ -1418,6 +1546,32 @@
             document.body.style.overflow = '';
         }
 
+        // Video Lightbox
+        function openVideoLightbox(videoId) {
+            const modal = document.getElementById('lightboxModal');
+            const content = document.getElementById('lightboxContent');
+            const video = videoData[videoId];
+            
+            if (!video) return;
+            
+            content.innerHTML = `
+                <div class="lightbox-main-image">
+                    <video controls autoplay style="width: 100%; height: auto; max-height: 70vh;">
+                        <source src="${video.videoSrc}" type="video/mp4">
+                    </video>
+                </div>
+                <div class="lightbox-info">
+                    <h2>${video.title}</h2>
+                    <p><strong>Location:</strong> ${video.location}</p>
+                    <p><strong>Date:</strong> ${video.date}</p>
+                    <p>${video.description}</p>
+                </div>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
         function changeMainImage(src) {
             document.getElementById('mainLightboxImage').src = src;
         }
@@ -1463,4 +1617,3 @@
     </script>
 </body>
 </html>
-
