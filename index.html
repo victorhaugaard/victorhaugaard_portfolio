@@ -241,7 +241,6 @@
 
         .photo-item:nth-child(4n+4) {
             grid-row: span 2;
-            aspect-ratio: 1/2;
         }
 
         .photo-item img {
@@ -275,7 +274,8 @@
             opacity: 0;
             transition: opacity 0.4s;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
+            justify-content: center;
             padding: 30px;
             cursor: pointer;
         }
@@ -288,6 +288,8 @@
             font-size: 14px;
             letter-spacing: 2px;
             text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
         }
 
         /* Video Gallery */
@@ -934,7 +936,7 @@
                     <span class="photo-title">Symmetries. Seoul, South Korea.</span>
                 </div>
             </div>
-            <div class="photo-item" style="animation-delay: 0.55s">
+            <div class="photo-item" style="animation-delay: 0.55s"  onclick="openLightbox('cultural')">
                 <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo13.jpg?alt=media&token=ce881bfd-d415-49b0-ab9e-9c8b0f033f3d" alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Cultural</span>
@@ -985,7 +987,7 @@
             <div class="photo-item" style="animation-delay: 1s">
                 <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo22.jpg?alt=media&token=39b8d731-416c-423b-9d01-3deda18589f9" alt="Photography">
                 <div class="photo-overlay">
-                    <span class="photo-title">Project 20</span>
+                    <span class="photo-title">Art</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
@@ -997,7 +999,7 @@
             <div class="photo-item" style="animation-delay: 1s">
                 <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo24.jpg?alt=media&token=b3478ea1-3d05-42e0-a5eb-ea24c93e8de0" alt="Photography">
                 <div class="photo-overlay">
-                    <span class="photo-title">Project 20</span>
+                    <span class="photo-title">Wow</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s" onclick="openLightbox('animals')">
@@ -1009,7 +1011,7 @@
             <div class="photo-item" style="animation-delay: 1s">
                 <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo26.jpg?alt=media&token=b607dcef-e700-41e9-a349-bc53f14fe216" alt="Photography">
                 <div class="photo-overlay">
-                    <span class="photo-title">Project 20</span>
+                    <span class="photo-title">EWhat is dis</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
@@ -1021,13 +1023,13 @@
             <div class="photo-item" style="animation-delay: 1s">
                 <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo28.jpg?alt=media&token=a5cdcac1-bbfd-483f-abb1-3af145d9ef62" alt="Photography">
                 <div class="photo-overlay">
-                    <span class="photo-title">Project 20</span>
+                    <span class="photo-title">Remove?</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
                 <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo29.jpg?alt=media&token=38636771-5d92-4bfe-8628-5520f7b7289a" alt="Photography">
                 <div class="photo-overlay">
-                    <span class="photo-title">Project 20</span>
+                    <span class="photo-title">Elephant</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
@@ -1649,14 +1651,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
