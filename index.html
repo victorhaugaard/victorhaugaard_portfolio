@@ -480,6 +480,7 @@
             gap: 15px;
             width: fit-content;
             animation: scroll-carousel 40s linear infinite;
+            cursor: grab;
         }
 
         .lightbox-carousel:hover {
@@ -1566,12 +1567,17 @@
             
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
+
+            setTimeout(() => {
+            setupCarouselNavigation();
+        }, 100);
         }
 
         function closeLightbox() {
             const modal = document.getElementById('lightboxModal');
             modal.classList.remove('active');
             document.body.style.overflow = '';
+            document.removeEventListener('keydown', handleArrowKeys);
         }
 
         // Video Lightbox
@@ -1642,9 +1648,157 @@
                 img.classList.add('loaded');
             }
         });
+
+        // ============ CAROUSEL SWIPE AND ARROW KEY NAVIGATION ============
+        let carouselState = {
+            carousel: null,
+            isDragging: false,
+            startPos: 0,
+            currentTranslate: 0,
+            prevTranslate: 0,
+            animationID: 0,
+            currentIndex: 0,
+            imageCount: 0
+        };
+        
+        function setupCarouselNavigation() {
+            const carousel = document.querySelector('.lightbox-carousel');
+            if (!carousel) return;
+        
+            carouselState.carousel = carousel;
+            carouselState.imageCount = carousel.querySelectorAll('img').length / 3;
+            
+            // Touch events for mobile
+            carousel.addEventListener('touchstart', touchStart);
+            carousel.addEventListener('touchend', touchEnd);
+            carousel.addEventListener('touchmove', touchMove);
+            
+            // Mouse events for desktop
+            carousel.addEventListener('mousedown', touchStart);
+            carousel.addEventListener('mouseup', touchEnd);
+            carousel.addEventListener('mouseleave', touchEnd);
+            carousel.addEventListener('mousemove', touchMove);
+            
+            // Prevent context menu
+            carousel.addEventListener('contextmenu', (e) => e.preventDefault());
+            
+            // Arrow key navigation
+            document.addEventListener('keydown', handleArrowKeys);
+        }
+        
+        function touchStart(event) {
+            const carousel = carouselState.carousel;
+            if (!carousel) return;
+            
+            carouselState.isDragging = true;
+            carouselState.startPos = getPositionX(event);
+            
+            // Pause the animation
+            carousel.style.animationPlayState = 'paused';
+            
+            // Get current transform value
+            const style = window.getComputedStyle(carousel);
+            const matrix = new WebKitCSSMatrix(style.transform);
+            carouselState.prevTranslate = matrix.m41;
+            
+            carousel.style.cursor = 'grabbing';
+        }
+        
+        function touchMove(event) {
+            if (!carouselState.isDragging) return;
+            
+            const currentPosition = getPositionX(event);
+            const diff = currentPosition - carouselState.startPos;
+            carouselState.currentTranslate = carouselState.prevTranslate + diff;
+            
+            // Apply transform
+            carouselState.carousel.style.transform = `translateX(${carouselState.currentTranslate}px)`;
+            carouselState.carousel.style.animation = 'none';
+        }
+        
+        function touchEnd() {
+            if (!carouselState.isDragging) return;
+            
+            carouselState.isDragging = false;
+            const carousel = carouselState.carousel;
+            
+            // Calculate snap position based on image width
+            const movedBy = carouselState.currentTranslate - carouselState.prevTranslate;
+            const imageWidth = carousel.querySelector('img').offsetWidth + 15;
+            
+            if (Math.abs(movedBy) > imageWidth / 4) {
+                if (movedBy > 0) {
+                    scrollCarousel('left');
+                } else {
+                    scrollCarousel('right');
+                }
+            }
+            
+            carousel.style.cursor = 'grab';
+            
+            // Resume animation after a delay
+            setTimeout(() => {
+                carousel.style.animation = 'scroll-carousel 40s linear infinite';
+                carousel.style.animationPlayState = 'running';
+            }, 2000);
+        }
+        
+        function getPositionX(event) {
+            return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+        }
+        
+        function handleArrowKeys(event) {
+            const modal = document.getElementById('lightboxModal');
+            if (!modal.classList.contains('active')) return;
+            
+            const carousel = document.querySelector('.lightbox-carousel');
+            if (!carousel) return;
+            
+            if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                scrollCarousel('left');
+            } else if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                scrollCarousel('right');
+            }
+        }
+        
+        function scrollCarousel(direction) {
+            const carousel = carouselState.carousel;
+            if (!carousel) return;
+            
+            const imageWidth = carousel.querySelector('img').offsetWidth + 15;
+            const style = window.getComputedStyle(carousel);
+            const matrix = new WebKitCSSMatrix(style.transform);
+            let currentTranslate = matrix.m41;
+            
+            // Pause animation
+            carousel.style.animationPlayState = 'paused';
+            carousel.style.animation = 'none';
+            
+            if (direction === 'left') {
+                currentTranslate += imageWidth * 2;
+            } else {
+                currentTranslate -= imageWidth * 2;
+            }
+            
+            // Apply smooth transform
+            carousel.style.transition = 'transform 0.4s ease';
+            carousel.style.transform = `translateX(${currentTranslate}px)`;
+            
+            // Reset transition and resume animation after scroll
+            setTimeout(() => {
+                carousel.style.transition = '';
+                setTimeout(() => {
+                    carousel.style.animation = 'scroll-carousel 40s linear infinite';
+                    carousel.style.animationPlayState = 'running';
+                }, 2000);
+            }, 400);
+        }
     </script>
 </body>
 </html>
+
 
 
 
