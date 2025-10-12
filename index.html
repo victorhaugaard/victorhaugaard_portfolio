@@ -823,10 +823,52 @@
 
             /* Hide arrows on mobile, swipe only */
             .lightbox-nav-arrow {
-                display: none;
             }
         }
 
+        /* Mobile - smaller, always visible arrows */
+        @media (max-width: 768px) {
+            .lightbox-nav-arrow {
+                width: 35px;
+                height: 35px;
+                opacity: 0.8; /* Always visible on mobile */
+                background: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(5px);
+            }
+            
+            .lightbox-nav-arrow:active {
+                opacity: 1;
+                background: rgba(0, 0, 0, 0.7);
+            }
+            
+            .lightbox-nav-arrow.left {
+                left: 10px;
+            }
+            
+            .lightbox-nav-arrow.right {
+                right: 10px;
+            }
+            
+            .lightbox-nav-arrow::after {
+                border-width: 6px 10px 6px 0; /* Smaller arrows */
+            }
+            
+            .lightbox-nav-arrow.left::after {
+                border-width: 6px 10px 6px 0;
+                margin-right: 2px;
+            }
+            
+            .lightbox-nav-arrow.right::after {
+                border-width: 6px 0 6px 10px;
+                margin-left: 2px;
+            }
+            
+            /* Don't hide arrows on hover on mobile */
+            .lightbox-main-image:hover .lightbox-nav-arrow {
+                opacity: 0.8;
+            }
+        }
+                
         /* Extra small screens (phones < 400px) */
         @media (max-width: 400px) {
             header {
@@ -1337,7 +1379,7 @@
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo1.jpg?alt=media&token=d4acd7df-c946-49f9-a9dc-23f4ce8a9c66',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo8.jpg?alt=media&token=3dff41ea-20bf-450f-8c4f-9eff06b07a8a',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo20.jpg?alt=media&token=a0d1b35a-53f3-467d-89f4-df6d07016112',
-                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/KVL06265.jpg?alt=media&token=bbdd9e0b-3c62-4d79-834f-f8579f8ddc9a',
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/KVL06400%20-%20kopia.jpg?alt=media&token=79affa48-2cc0-4cfa-859f-6d27653bf585',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/KVL06574.jpg?alt=media&token=611d16c6-8964-4417-a0c8-02c44d0fe4d5',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/KVL06269.jpg?alt=media&token=6eba0829-c20f-4328-885a-f573d07103a6'
                 ]
@@ -1957,6 +1999,7 @@
     </script>
 </body>
 </html>
+
 
 
 
