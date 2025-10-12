@@ -339,6 +339,62 @@
             opacity: 1;
         }
 
+        /* Project indicator icon */
+        .project-indicator {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+            z-index: 5;
+        }
+        
+        .photo-item:hover .project-indicator {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        
+        /* Grid icon using CSS */
+        .project-indicator::before {
+            content: '';
+            width: 16px;
+            height: 16px;
+            background-image: 
+                linear-gradient(to right, #0a0a0a 0%, #0a0a0a 6px, transparent 6px, transparent 10px, #0a0a0a 10px, #0a0a0a 16px),
+                linear-gradient(to bottom, #0a0a0a 0%, #0a0a0a 6px, transparent 6px, transparent 10px, #0a0a0a 10px, #0a0a0a 16px);
+            background-size: 16px 16px;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .project-indicator {
+                width: 25px;
+                height: 25px;
+                top: 10px;
+                right: 10px;
+                opacity: 0.7; /* Always visible on mobile */
+            }
+            
+            .project-indicator::before {
+                width: 14px;
+                height: 14px;
+                background-image: 
+                    linear-gradient(to right, #0a0a0a 0%, #0a0a0a 5px, transparent 5px, transparent 9px, #0a0a0a 9px, #0a0a0a 14px),
+                    linear-gradient(to bottom, #0a0a0a 0%, #0a0a0a 5px, transparent 5px, transparent 9px, #0a0a0a 9px, #0a0a0a 14px);
+                background-size: 14px 14px;
+            }
+        }
+
         .play-icon {
             position: absolute;
             top: 50%;
@@ -977,6 +1033,7 @@
                 <div class="photo-overlay">
                     <span class="photo-title">Abstract</span>
                 </div>
+                 <div class="project-indicator"></div>
             </div>
             <div class="photo-item" style="animation-delay: 0.1s" onclick="openLightbox('portraits')">
                 <img loading="lazy" src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/PER04754-3.jpg?alt=media&token=15616d32-06d5-466e-8b68-a9cc37f7cce9" alt="Photography">
@@ -1998,6 +2055,7 @@
     </script>
 </body>
 </html>
+
 
 
 
