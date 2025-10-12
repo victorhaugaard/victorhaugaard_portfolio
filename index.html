@@ -14,7 +14,7 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
             background: #0a0a0a;
             color: #f5f5f5;
             overflow-x: hidden;
@@ -182,6 +182,9 @@
             animation: fadeInUp 1.2s ease 0.3s forwards;
             z-index: 1;
             position: relative;
+            max-width: 900px; /* ADD THIS - controls both title widths */
+            margin: 0 auto; /* ADD THIS - centers the content */
+            padding: 0 20px; /* ADD THIS - adds side padding */
         }
 
         .hero-title {
@@ -193,6 +196,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            width: 100%;
         }
 
         .hero-subtitle {
@@ -200,6 +204,7 @@
             letter-spacing: 4px;
             opacity: 0.6;
             text-transform: uppercase;
+            width: 100%;    
         }
 
         /* Gallery Container */
@@ -1517,7 +1522,7 @@
                 images: [
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/PER01610.jpg?alt=media&token=7f2f706c-e98e-47d1-9ba8-8f5f7632462c',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo19.jpg?alt=media&token=b0918bad-639b-45a8-b8a4-d778d6146d08',
-                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo5.jpg?alt=media&token=9702673f-3fc5-4f54-ad22-0a4e69754ed1',
+                    'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/RealForestRotated.jpg?alt=media&token=01fb88de-3288-4931-9103-3318c6d7a581',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo6.jpg?alt=media&token=59b27bf3-23e8-43b7-8596-b9e730cbbeca',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo7.jpg?alt=media&token=be0b8e52-0d8a-43ce-b918-3c11c5ee4ef4',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo9.jpg?alt=media&token=e067078d-bb90-48bf-b398-80622e8ad9b6',
@@ -2066,6 +2071,7 @@
     </script>
 </body>
 </html>
+
 
 
 
