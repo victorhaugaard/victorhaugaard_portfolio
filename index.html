@@ -821,53 +821,51 @@
                 margin-left: 4px;
             }
 
-            /* Hide arrows on mobile, swipe only */
-            .lightbox-nav-arrow {
+            /* Mobile - smaller, always visible arrows */
+            @media (max-width: 768px) {
+                .lightbox-nav-arrow {
+                    width: 35px;
+                    height: 35px;
+                    opacity: 0.8; /* Always visible on mobile */
+                    background: rgba(0, 0, 0, 0.5);
+                    backdrop-filter: blur(5px);
+                }
+                
+                .lightbox-nav-arrow:active {
+                    opacity: 1;
+                    background: rgba(0, 0, 0, 0.7);
+                }
+                
+                .lightbox-nav-arrow.left {
+                    left: 10px;
+                }
+                
+                .lightbox-nav-arrow.right {
+                    right: 10px;
+                }
+                
+                .lightbox-nav-arrow::after {
+                    border-width: 6px 10px 6px 0; /* Smaller arrows */
+                }
+                
+                .lightbox-nav-arrow.left::after {
+                    border-width: 6px 10px 6px 0;
+                    margin-right: 2px;
+                }
+                
+                .lightbox-nav-arrow.right::after {
+                    border-width: 6px 0 6px 10px;
+                    margin-left: 2px;
+                }
+                
+                /* Don't hide arrows on hover on mobile */
+                .lightbox-main-image:hover .lightbox-nav-arrow {
+                    opacity: 0.8;
+                }
             }
         }
 
-        /* Mobile - smaller, always visible arrows */
-        @media (max-width: 768px) {
-            .lightbox-nav-arrow {
-                width: 35px;
-                height: 35px;
-                opacity: 0.8; /* Always visible on mobile */
-                background: rgba(0, 0, 0, 0.5);
-                backdrop-filter: blur(5px);
-            }
-            
-            .lightbox-nav-arrow:active {
-                opacity: 1;
-                background: rgba(0, 0, 0, 0.7);
-            }
-            
-            .lightbox-nav-arrow.left {
-                left: 10px;
-            }
-            
-            .lightbox-nav-arrow.right {
-                right: 10px;
-            }
-            
-            .lightbox-nav-arrow::after {
-                border-width: 6px 10px 6px 0; /* Smaller arrows */
-            }
-            
-            .lightbox-nav-arrow.left::after {
-                border-width: 6px 10px 6px 0;
-                margin-right: 2px;
-            }
-            
-            .lightbox-nav-arrow.right::after {
-                border-width: 6px 0 6px 10px;
-                margin-left: 2px;
-            }
-            
-            /* Don't hide arrows on hover on mobile */
-            .lightbox-main-image:hover .lightbox-nav-arrow {
-                opacity: 0.8;
-            }
-        }
+        
                 
         /* Extra small screens (phones < 400px) */
         @media (max-width: 400px) {
@@ -1999,6 +1997,7 @@
     </script>
 </body>
 </html>
+
 
 
 
