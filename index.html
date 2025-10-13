@@ -1001,6 +1001,26 @@
             }
         }
 
+        /* Mobile Toggle - Below Hero */
+            .mobile-toggle-container {
+                display: none;
+                justify-content: center;
+                padding: 20px;
+                background: #0a0a0a;
+            }
+            
+            @media (max-width: 768px) {
+                /* Hide toggle in header on mobile */
+                .nav-controls .toggle-container {
+                    display: none;
+                }
+                
+                /* Show mobile toggle below hero */
+                .mobile-toggle-container {
+                    display: flex;
+                }
+            }
+
         /* Footer */
         footer {
             background: #0a0a0a;
@@ -1117,6 +1137,17 @@
             <p class="hero-subtitle">Photographer & Videographer</p>
         </div>
     </section>
+
+    <!-- Mobile Toggle (appears below hero on mobile) -->
+    <div class="mobile-toggle-container">
+        <div class="toggle-container">
+            <span class="toggle-option" id="stillOptionMobile">STILLS</span>
+            <div class="toggle-switch" id="toggleSwitchMobile">
+                <div class="toggle-slider"></div>
+            </div>
+            <span class="toggle-option inactive" id="videoOptionMobile">CINE</span>
+        </div>
+    </div>
 
     <div class="gallery-container">
         <!-- Photo Gallery -->
@@ -2185,9 +2216,80 @@
                 }, 2000);
             }, 400);
         }
+
+        // Toggle between Still and Video - Synced for desktop and mobile
+        const toggleSwitch = document.getElementById('toggleSwitch');
+        const toggleSwitchMobile = document.getElementById('toggleSwitchMobile');
+        const stillOption = document.getElementById('stillOption');
+        const videoOption = document.getElementById('videoOption');
+        const stillOptionMobile = document.getElementById('stillOptionMobile');
+        const videoOptionMobile = document.getElementById('videoOptionMobile');
+        const photoGallery = document.getElementById('photoGallery');
+        const videoGallery = document.getElementById('videoGallery');
+        
+        let isVideo = false;
+        
+        function toggleGallery() {
+            isVideo = !isVideo;
+            
+            // Update both toggles
+            [toggleSwitch, toggleSwitchMobile].forEach(toggle => {
+                if (toggle) {
+                    if (isVideo) {
+                        toggle.classList.add('video');
+                    } else {
+                        toggle.classList.remove('video');
+                    }
+                }
+            });
+            
+            // Update all options
+            if (isVideo) {
+                stillOption.classList.add('inactive');
+                videoOption.classList.remove('inactive');
+                if (stillOptionMobile) stillOptionMobile.classList.add('inactive');
+                if (videoOptionMobile) videoOptionMobile.classList.remove('inactive');
+                photoGallery.classList.add('hidden');
+                videoGallery.classList.remove('hidden');
+                
+                videoGallery.querySelectorAll('.video-item').forEach((item, index) => {
+                    item.style.animation = 'none';
+                    setTimeout(() => {
+                        item.style.animation = `fadeInUp 0.8s ease ${index * 0.1}s forwards`;
+                    }, 10);
+                });
+            } else {
+                stillOption.classList.remove('inactive');
+                videoOption.classList.add('inactive');
+                if (stillOptionMobile) stillOptionMobile.classList.remove('inactive');
+                if (videoOptionMobile) videoOptionMobile.classList.add('inactive');
+                photoGallery.classList.remove('hidden');
+                videoGallery.classList.add('hidden');
+                
+                photoGallery.querySelectorAll('.photo-item').forEach((item, index) => {
+                    item.style.animation = 'none';
+                    setTimeout(() => {
+                        item.style.animation = `fadeInUp 0.8s ease ${index * 0.1}s forwards`;
+                    }, 10);
+                });
+            }
+        }
+        
+        // Desktop toggle
+        toggleSwitch.addEventListener('click', toggleGallery);
+        stillOption.addEventListener('click', () => { if (isVideo) toggleGallery(); });
+        videoOption.addEventListener('click', () => { if (!isVideo) toggleGallery(); });
+        
+        // Mobile toggle
+        if (toggleSwitchMobile) {
+            toggleSwitchMobile.addEventListener('click', toggleGallery);
+            stillOptionMobile.addEventListener('click', () => { if (isVideo) toggleGallery(); });
+            videoOptionMobile.addEventListener('click', () => { if (!isVideo) toggleGallery(); });
+        }
     </script>
 </body>
 </html>
+
 
 
 
