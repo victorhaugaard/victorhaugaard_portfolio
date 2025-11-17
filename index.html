@@ -195,12 +195,27 @@
         .hero-content {
             text-align: center;
             opacity: 0;
-            animation: fadeInUp 1.2s ease 0.3s forwards;
+            animation: fadeInUp 1.2s ease 0.3s forwards, fadeOutAfterDelay 1s ease 3s forwards;
             z-index: 1;
             position: relative;
-            max-width: 900px; /* ADD THIS - controls both title widths */
-            margin: 0 auto; /* ADD THIS - centers the content */
-            padding: 0 20px; /* ADD THIS - adds side padding */
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            transition: opacity 0.5s ease;
+        }
+
+        /* ADD THESE NEW STYLES: */
+        .hero:hover .hero-content {
+            opacity: 1;
+        }
+
+        @keyframes fadeOutAfterDelay {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
         }
 
         .hero-title {
@@ -413,6 +428,16 @@
                     linear-gradient(to right, #0a0a0a 0%, #0a0a0a 5px, transparent 5px, transparent 9px, #0a0a0a 9px, #0a0a0a 14px),
                     linear-gradient(to bottom, #0a0a0a 0%, #0a0a0a 5px, transparent 5px, transparent 9px, #0a0a0a 9px, #0a0a0a 14px);
                 background-size: 14px 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                animation: fadeInUp 1.2s ease 0.3s forwards, fadeOutAfterDelay 1s ease 4s forwards;
+            }
+            
+            .hero.show-text .hero-content {
+                opacity: 1;
             }
         }
 
@@ -2408,9 +2433,26 @@
                 }, 2000);
             }, 400);
         }
+
+        // Toggle text on mobile tap
+        if (window.innerWidth <= 768) {
+            const hero = document.querySelector('.hero');
+            hero.addEventListener('click', function() {
+                this.classList.toggle('show-text');
+                
+                // Auto-hide after 3 seconds
+                if (this.classList.contains('show-text')) {
+                    setTimeout(() => {
+                        this.classList.remove('show-text');
+                    }, 3000);
+                }
+            });
+        }
+        
     </script>
 </body>
 </html>
+
 
 
 
