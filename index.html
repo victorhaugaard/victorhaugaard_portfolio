@@ -1353,15 +1353,14 @@
                     <span class="photo-title">Wedding Movie - Salem & Nermina</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.1s">
-                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/br%C3%B6llp1.jpg?alt=media&token=de83d0b1-3767-401f-950d-51b42ac7f0ef">
-                    <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Adam%20%26%20Alexandra%20-%204K.mp4?alt=media&token=461ae951-d1e9-4a8a-b942-ca46678d56d3" type="video/mp4">
-                </video>
-                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
-                <div class="photo-overlay" onclick="openVideoLightbox('wedding-adam-alexandra')">
-                    <span class="photo-title">Wedding Movie - Adam & Alexandra</span>
+            <!-- Wedding - Adam & Alexandra -->
+                <div class="video-item" style="animation-delay: 0.1s" onclick="openYouTubeLightbox('Adam & Alexndra')">
+                    <img src="https://youtu.be/9rjsQim0sVw" alt="Wedding Movie">
+                    <div class="play-icon"></div>
+                    <div class="photo-overlay">
+                        <span class="photo-title">Wedding Movie - Adam & Alexandra</span>
+                    </div>
                 </div>
-            </div>
             <div class="video-item" style="animation-delay: 0.1s">
                 <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/SUD09419.jpg?alt=media&token=15a4c608-6807-4696-89fe-efa9176f1de3">
                     <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Spitzkoppe.mp4?alt=media&token=58ac6d01-d9a3-4722-aa13-ea035d6e975c" type="video/mp4">
@@ -1982,24 +1981,27 @@
             document.removeEventListener('keydown', handleArrowKeys);
         }
 
-        function openVideoLightbox(videoId) {
+        function openYouTubeLightbox(videoId) {
             const modal = document.getElementById('lightboxModal');
             const content = document.getElementById('lightboxContent');
-            const video = videoData[videoId];
-            
-            if (!video) return;
             
             content.innerHTML = `
                 <div class="lightbox-main-image">
-                    <video controls autoplay style="width: 100%; height: auto; max-height: 70vh;">
-                        <source src="${video.videoSrc}" type="video/mp4">
-                    </video>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                        <iframe 
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                            src="https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
                 </div>
                 <div class="lightbox-info">
-                    <h2>${video.title}</h2>
-                    <p><strong>Location:</strong> ${video.location}</p>
-                    <p><strong>Date:</strong> ${video.date}</p>
-                    <p>${video.description}</p>
+                    <h2>${videoData[videoId].title}</h2>
+                    <p><strong>Location:</strong> ${videoData[videoId].location}</p>
+                    <p><strong>Date:</strong> ${videoData[videoId].date}</p>
+                    <p>${videoData[videoId].description}</p>
                 </div>
             `;
             
@@ -2254,6 +2256,7 @@
     </script>
 </body>
 </html>
+
 
 
 
