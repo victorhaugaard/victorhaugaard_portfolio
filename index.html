@@ -185,12 +185,15 @@
         /* ADD THIS - Letterbox style on mobile */
         @media (max-width: 768px) {
             .hero {
-                height: 50vh; /* Half screen height */
+                height: 100vw; /* Makes it square (width = height) */
+                min-height: 400px; /* Prevents it from being too small */
+                max-height: 600px; /* Prevents it from being too tall */
             }
             
-            .hero-background video {
-                object-fit: contain;
-                background: #0a0a0a;
+            .hero-background video,
+            .hero-background img {
+                object-fit: cover;
+                object-position: center center; /* Keeps focus in center */
             }
         }
 
@@ -2464,6 +2467,7 @@
     </script>
 </body>
 </html>
+
 
 
 
