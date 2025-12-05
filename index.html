@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Victor Haugaard - Photographer & Videographer based in Gothenburg</title>
 
-    <link rel="preconnect" href="https://firebasestorage.googleapis.com">
+    <link rel="preconnect" href="https://firebasestorage.googleapis.com" crossorigin>
     <link rel="dns-prefetch" href="https://firebasestorage.googleapis.com">
-    <link rel="preload" as="image" href="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/hero-poster.jpg?alt=media">
+    <link rel="preload" as="image" href="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/hero-poster.jpg?alt=media" fetchpriority="high">
+    <link rel="preload" as="video" href="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Showreel-MP4-HD-Low-Res.mp4?alt=media&token=ac2c5ae6-fab9-443b-832d-63ea366316c0" type="video/mp4">
     
     <link rel="icon" type="image/png" sizes="32x32" href="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/favicon-32x32.png?alt=media&token=dc5f325d-8d39-4d73-9b24-ef8421796642">
     <style>
@@ -23,6 +24,25 @@
             color: #f5f5f5;
             overflow-x: hidden;
             line-height: 1.6;
+        }
+
+        /* Performance optimization - content visibility */
+        .photo-gallery,
+        .video-gallery {
+            content-visibility: auto;
+            contain-intrinsic-size: 0 2000px;
+        }
+
+        /* Optimize rendering - smooth images for photography */
+        img, video {
+            image-rendering: auto;
+        }
+
+        /* Reduce repaints */
+        .photo-item,
+        .video-item {
+            will-change: opacity;
+            contain: layout style paint;
         }
 
         /* Custom Scrollbar Hiding */
@@ -303,16 +323,27 @@
             background-color: #1a1a1a;
         }
 
-        /* Lazy load fade-in effect */
+        /* Lazy load fade-in effect with blur-up */
         .photo-item img[loading="lazy"],
         .lightbox-gallery img[loading="lazy"] {
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: opacity 0.5s ease-in-out;
         }
 
         .photo-item img[loading="lazy"].loaded,
         .lightbox-gallery img[loading="lazy"].loaded {
             opacity: 1;
+        }
+
+        /* Blur placeholder effect */
+        .photo-item img.loading {
+            filter: blur(20px);
+            transform: scale(1.1);
+        }
+
+        .photo-item img.loaded {
+            filter: blur(0);
+            transform: scale(1);
         }
 
         .photo-item:hover img {
@@ -1192,13 +1223,13 @@
 
     <section class="hero">
         <div class="hero-background">
-            <video autoplay muted loop playsinline preload="auto">
+            <video autoplay muted loop playsinline preload="metadata" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/hero-poster.jpg?alt=media">
                 <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Showreel-MP4-HD-Low-Res.mp4?alt=media&token=ac2c5ae6-fab9-443b-832d-63ea366316c0" type="video/mp4">
             </video>
         </div>
-        
+
         <div class="hero-overlay"></div>
-        
+
         <div class="hero-content">
             <h1 class="hero-title">VICTORS VISUELLA VERKSTAD</h1>
             <p class="hero-subtitle">Photographer & Videographer</p>
@@ -2247,13 +2278,57 @@
             }
         });
 
+        // Enhanced lazy loading with blur-up effect
         document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            img.classList.add('loading');
+
             img.addEventListener('load', function() {
+                this.classList.remove('loading');
                 this.classList.add('loaded');
             });
+
             if (img.complete) {
+                img.classList.remove('loading');
                 img.classList.add('loaded');
             }
+        });
+
+        // Advanced IntersectionObserver for better lazy loading
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+
+                    // Optimize Firebase Storage URLs with size parameters
+                    if (img.dataset.src && img.dataset.src.includes('firebasestorage.googleapis.com')) {
+                        const isMobile = window.innerWidth < 768;
+                        const size = isMobile ? 800 : 1200;
+                        let optimizedUrl = img.dataset.src;
+
+                        // Add Firebase image transformation parameters
+                        if (!optimizedUrl.includes('_')) {
+                            const urlParts = optimizedUrl.split('?');
+                            if (urlParts.length > 0) {
+                                optimizedUrl = urlParts[0] + `_${size}x${size}?` + (urlParts[1] || '');
+                            }
+                        }
+
+                        img.src = optimizedUrl;
+                    } else if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                    }
+
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+
+        // Observe all images that should be lazy loaded
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
         });
 
         // ============ MAIN IMAGE NAVIGATION ============
@@ -2464,7 +2539,7 @@
             const hero = document.querySelector('.hero');
             hero.addEventListener('click', function() {
                 this.classList.toggle('show-text');
-                
+
                 // Auto-hide after 3 seconds
                 if (this.classList.contains('show-text')) {
                     setTimeout(() => {
@@ -2473,23 +2548,74 @@
                 }
             });
         }
-        
+
+        // ============ PERFORMANCE OPTIMIZATIONS ============
+
+        // Adaptive video quality based on connection speed
+        if ('connection' in navigator) {
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            const heroVideo = document.querySelector('.hero-background video');
+
+            if (connection && heroVideo) {
+                // On slow connections (3G or slower), don't autoplay video
+                if (connection.effectiveType === '2g' || connection.effectiveType === 'slow-2g') {
+                    heroVideo.removeAttribute('autoplay');
+                    heroVideo.preload = 'none';
+                } else if (connection.effectiveType === '3g') {
+                    heroVideo.preload = 'metadata';
+                }
+            }
+        }
+
+        // Optimize image loading based on viewport
+        function optimizeImageLoading() {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+
+            images.forEach(img => {
+                if (!img.hasAttribute('decoding')) {
+                    img.setAttribute('decoding', 'async');
+                }
+
+                // Add fetchpriority to images near viewport
+                const rect = img.getBoundingClientRect();
+                const isNearViewport = rect.top < window.innerHeight * 1.5;
+
+                if (isNearViewport && !img.hasAttribute('fetchpriority')) {
+                    img.setAttribute('fetchpriority', 'high');
+                }
+            });
+        }
+
+        // Run on load and when images are dynamically added
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', optimizeImageLoading);
+        } else {
+            optimizeImageLoading();
+        }
+
+        // Reduce motion for users who prefer it
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('video').forEach(video => {
+                video.pause();
+                video.removeAttribute('autoplay');
+            });
+        }
+
+        // Defer non-critical image loading
+        window.addEventListener('load', () => {
+            // Mark page as fully loaded for any remaining optimizations
+            document.body.classList.add('loaded');
+
+            // Lazy load images in lightbox galleries when they're opened
+            const lightboxImages = document.querySelectorAll('.lightbox-gallery img[data-src]');
+            lightboxImages.forEach(img => {
+                if (img.dataset.src && !img.src) {
+                    // These will load when lightbox opens
+                    img.loading = 'lazy';
+                }
+            });
+        });
+
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
