@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,15 @@
 
     <link rel="preconnect" href="https://firebasestorage.googleapis.com" crossorigin>
     <link rel="dns-prefetch" href="https://firebasestorage.googleapis.com">
-    <link rel="preload" as="image" href="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/hero-poster.jpg?alt=media" fetchpriority="high">
-    <link rel="preload" as="video" href="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Showreel-MP4-HD-Low-Res.mp4?alt=media&token=ac2c5ae6-fab9-443b-832d-63ea366316c0" type="video/mp4">
-    
-    <link rel="icon" type="image/png" sizes="32x32" href="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/favicon-32x32.png?alt=media&token=dc5f325d-8d39-4d73-9b24-ef8421796642">
+    <link rel="preload" as="image"
+        href="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/hero-poster.jpg?alt=media"
+        fetchpriority="high">
+    <link rel="preload" as="video"
+        href="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Showreel-MP4-HD-Low-Res.mp4?alt=media&token=ac2c5ae6-fab9-443b-832d-63ea366316c0"
+        type="video/mp4">
+
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/favicon-32x32.png?alt=media&token=dc5f325d-8d39-4d73-9b24-ef8421796642">
     <style>
         * {
             margin: 0;
@@ -34,7 +40,8 @@
         }
 
         /* Optimize rendering - smooth images for photography */
-        img, video {
+        img,
+        video {
             image-rendering: auto;
         }
 
@@ -47,12 +54,15 @@
 
         /* Custom Scrollbar Hiding */
         .lightbox-content {
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
         }
 
         .lightbox-content::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
+            display: none;
+            /* Chrome, Safari, Opera */
         }
 
         /* Header */
@@ -82,6 +92,7 @@
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
             }
@@ -93,9 +104,10 @@
             display: flex;
             align-items: center;
         }
-        
+
         .logo img {
-            height: 55px; /* Default desktop size */
+            height: 55px;
+            /* Default desktop size */
             width: auto;
             object-fit: contain;
             transition: height 0.3s ease;
@@ -205,15 +217,18 @@
         /* ADD THIS - Letterbox style on mobile */
         @media (max-width: 768px) {
             .hero {
-                height: 100vw; /* Makes it square (width = height) */
-                min-height: 400px; /* Prevents it from being too small */
-                max-height: 600px; /* Prevents it from being too tall */
+                height: 100vw;
+                /* Makes it square (width = height) */
+                min-height: 400px;
+                /* Prevents it from being too small */
+                max-height: 600px;
+                /* Prevents it from being too tall */
             }
-            
+
             .hero-background video,
             .hero-background img {
                 object-fit: cover;
-                object-position: center 30%; 
+                object-position: center 30%;
             }
         }
 
@@ -248,6 +263,7 @@
             from {
                 opacity: 1;
             }
+
             to {
                 opacity: 0;
             }
@@ -270,7 +286,7 @@
             letter-spacing: 4px;
             opacity: 0.6;
             text-transform: lowercase;
-            width: 100%;    
+            width: 100%;
         }
 
         /* Gallery Container */
@@ -403,7 +419,7 @@
             height: 100%;
             object-fit: cover;
         }
-        
+
         .video-item .photo-overlay {
             align-items: flex-end;
         }
@@ -438,25 +454,25 @@
             pointer-events: none;
             z-index: 5;
         }
-        
+
         .photo-item:hover .project-indicator {
             opacity: 1;
             transform: scale(1.05);
         }
-        
+
         /* Grid icon using CSS */
         .project-indicator::before {
             content: '';
             width: 16px;
             height: 16px;
-            background-image: 
+            background-image:
                 linear-gradient(to right, #0a0a0a 0%, #0a0a0a 6px, transparent 6px, transparent 10px, #0a0a0a 10px, #0a0a0a 16px),
                 linear-gradient(to bottom, #0a0a0a 0%, #0a0a0a 6px, transparent 6px, transparent 10px, #0a0a0a 10px, #0a0a0a 16px);
             background-size: 16px 16px;
             background-position: center;
             background-repeat: no-repeat;
         }
-        
+
         /* Mobile adjustments */
         @media (max-width: 768px) {
             .project-indicator {
@@ -464,13 +480,13 @@
                 height: 20px;
                 top: 10px;
                 right: 10px;
-                opacity: 0; 
+                opacity: 0;
             }
-            
+
             .project-indicator::before {
                 width: 14px;
                 height: 14px;
-                background-image: 
+                background-image:
                     linear-gradient(to right, #0a0a0a 0%, #0a0a0a 5px, transparent 5px, transparent 9px, #0a0a0a 9px, #0a0a0a 14px),
                     linear-gradient(to bottom, #0a0a0a 0%, #0a0a0a 5px, transparent 5px, transparent 9px, #0a0a0a 9px, #0a0a0a 14px);
                 background-size: 14px 14px;
@@ -481,7 +497,7 @@
             .hero-content {
                 animation: fadeInUp 1.2s ease 0.3s forwards, fadeOutAfterDelay 1s ease 4s forwards;
             }
-            
+
             .hero.show-text .hero-content {
                 opacity: 1;
             }
@@ -717,6 +733,7 @@
             0% {
                 transform: translateX(0);
             }
+
             100% {
                 transform: translateX(calc(-100% / 3));
             }
@@ -829,6 +846,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -848,9 +866,10 @@
                 display: flex;
                 align-items: center;
             }
-            
+
             .logo img {
-                height: 35px; /* Default desktop size */
+                height: 35px;
+                /* Default desktop size */
                 width: auto;
                 object-fit: contain;
                 transition: height 0.3s ease;
@@ -978,38 +997,40 @@
                 .lightbox-nav-arrow {
                     width: 35px;
                     height: 35px;
-                    opacity: 0.8; /* Always visible on mobile */
+                    opacity: 0.8;
+                    /* Always visible on mobile */
                     background: rgba(0, 0, 0, 0.5);
                     backdrop-filter: blur(5px);
                 }
-                
+
                 .lightbox-nav-arrow:active {
                     opacity: 1;
                     background: rgba(0, 0, 0, 0.7);
                 }
-                
+
                 .lightbox-nav-arrow.left {
                     left: 10px;
                 }
-                
+
                 .lightbox-nav-arrow.right {
                     right: 10px;
                 }
-                
+
                 .lightbox-nav-arrow::after {
-                    border-width: 6px 10px 6px 0; /* Smaller arrows */
+                    border-width: 6px 10px 6px 0;
+                    /* Smaller arrows */
                 }
-                
+
                 .lightbox-nav-arrow.left::after {
                     border-width: 6px 10px 6px 0;
                     margin-right: 2px;
                 }
-                
+
                 .lightbox-nav-arrow.right::after {
                     border-width: 6px 0 6px 10px;
                     margin-left: 2px;
                 }
-                
+
                 /* Don't hide arrows on hover on mobile */
                 .lightbox-main-image:hover .lightbox-nav-arrow {
                     opacity: 0.8;
@@ -1017,8 +1038,8 @@
             }
         }
 
-        
-                
+
+
         /* Extra small screens (phones < 400px) */
         @media (max-width: 400px) {
             header {
@@ -1031,9 +1052,10 @@
                 display: flex;
                 align-items: center;
             }
-            
+
             .logo img {
-                height: 35px; /* Default desktop size */
+                height: 35px;
+                /* Default desktop size */
                 width: auto;
                 object-fit: contain;
                 transition: height 0.3s ease;
@@ -1090,30 +1112,31 @@
         }
 
         /* Mobile Toggle - Below Hero */
-            .mobile-toggle-container {
+        .mobile-toggle-container {
+            display: none;
+            justify-content: center;
+            padding: 20px;
+            background: #0a0a0a;
+        }
+
+        @media (max-width: 768px) {
+
+            /* Hide toggle in header on mobile */
+            .nav-controls .toggle-container {
                 display: none;
-                justify-content: center;
-                padding: 20px;
-                background: #0a0a0a;
             }
-            
-            @media (max-width: 768px) {
-                /* Hide toggle in header on mobile */
-                .nav-controls .toggle-container {
-                    display: none;
-                }
-                
-                /* Show mobile toggle below hero */
-                .mobile-toggle-container {
-                    display: flex;
-                }
+
+            /* Show mobile toggle below hero */
+            .mobile-toggle-container {
+                display: flex;
             }
+        }
 
         @media (max-width: 768px) {
             .mobile-toggle-container {
                 padding: 15px 20px;
             }
-            
+
             .gallery-container {
                 padding: 8px 20px 80px;
             }
@@ -1126,7 +1149,7 @@
             padding: 60px 50px 30px;
             margin-top: 100px;
         }
-        
+
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -1135,7 +1158,7 @@
             gap: 40px;
             margin-bottom: 40px;
         }
-        
+
         .footer-section h3 {
             font-size: 14px;
             letter-spacing: 2px;
@@ -1143,7 +1166,7 @@
             margin-bottom: 20px;
             font-weight: 300;
         }
-        
+
         .footer-section p,
         .footer-section a {
             font-size: 14px;
@@ -1154,59 +1177,240 @@
             display: block;
             transition: opacity 0.3s;
         }
-        
+
         .footer-section a:hover {
             opacity: 1;
         }
-        
+
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
+
         .footer-bottom p {
             font-size: 12px;
             opacity: 0.5;
             letter-spacing: 1px;
         }
-        
+
         .footer-company {
             margin-top: 10px;
             font-size: 11px;
             opacity: 0.4;
             letter-spacing: 0.5px;
         }
-        
+
         /* Responsive Footer */
         @media (max-width: 768px) {
             footer {
                 padding: 40px 20px 20px;
                 margin-top: 60px;
             }
-            
+
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
                 text-align: center;
             }
-            
+
             .footer-section h3 {
                 font-size: 12px;
             }
-            
+
             .footer-section p,
             .footer-section a {
                 font-size: 13px;
             }
         }
+
+        /* Pricing Modal Styles */
+        .pricing-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 2200;
+        }
+
+        .pricing-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .pricing-content {
+            background: #111;
+            padding: 40px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .pricing-content::-webkit-scrollbar {
+            display: none;
+            /* Chrome/Safari */
+        }
+
+        .pricing-section h2 {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .pricing-section .intro {
+            text-align: center;
+            opacity: 0.8;
+            margin-bottom: 25px;
+            font-style: italic;
+            font-size: 13px;
+        }
+
+        .pricing-section h3 {
+            font-size: 16px;
+            margin: 25px 0 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        .pricing-section ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .pricing-section li {
+            margin-bottom: 8px;
+            opacity: 0.8;
+            position: relative;
+            padding-left: 20px;
+            font-size: 14px;
+        }
+
+        .pricing-section li::before {
+            content: '•';
+            position: absolute;
+            left: 5px;
+            opacity: 0.5;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            text-align: left;
+            padding: 12px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+        }
+
+        .pricing-table th {
+            font-weight: 600;
+            opacity: 0.9;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-table td {
+            opacity: 0.8;
+        }
+
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .language-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .language-toggle button {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 5px 20px;
+            cursor: pointer;
+            font-size: 12px;
+            border-radius: 20px;
+            transition: all 0.3s;
+            opacity: 0.6;
+            letter-spacing: 1px;
+        }
+
+        .language-toggle button.active,
+        .language-toggle button:hover {
+            background: #fff;
+            color: #000;
+            opacity: 1;
+        }
+
+        .pricing-section .cta {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            text-align: center;
+            border-radius: 4px;
+            margin-top: 30px;
+            font-size: 13px;
+        }
+
+        .pricing-section .cta strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Button to open pricing in Contact Modal */
+        .pricing-btn {
+            display: block;
+            margin: 25px auto 0;
+            padding: 12px 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: transparent;
+            width: fit-content;
+        }
+
+        .pricing-btn:hover {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <div class="header-content">
             <div class="logo">
-                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/beige-vichau-2.png?alt=media&token=890c032d-cff6-4f99-b186-aa29cd8ae6ba" alt="Victor Haugaard Logo">
+                <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/beige-vichau-2.png?alt=media&token=890c032d-cff6-4f99-b186-aa29cd8ae6ba"
+                    alt="Victor Haugaard Logo">
             </div>
             <div class="nav-controls">
                 <div class="toggle-container">
@@ -1223,8 +1427,11 @@
 
     <section class="hero">
         <div class="hero-background">
-            <video autoplay muted loop playsinline preload="metadata" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/hero-poster.jpg?alt=media">
-                <source src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Showreel-MP4-HD-Low-Res.mp4?alt=media&token=ac2c5ae6-fab9-443b-832d-63ea366316c0" type="video/mp4">
+            <video autoplay muted loop playsinline preload="metadata"
+                poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/hero-poster.jpg?alt=media">
+                <source
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Showreel-MP4-HD-Low-Res.mp4?alt=media&token=ac2c5ae6-fab9-443b-832d-63ea366316c0"
+                    type="video/mp4">
             </video>
         </div>
 
@@ -1250,98 +1457,80 @@
     <div class="gallery-container">
         <!-- Photo Gallery -->
         <div class="photo-gallery" id="photoGallery">
-             <div class="photo-item" style="animation-delay: 0.15s" onclick="openLightbox('abstract')">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async" 
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/PER01610.jpg?alt=media&token=7f2f706c-e98e-47d1-9ba8-8f5f7632462c" alt="Photography">
+            <div class="photo-item" style="animation-delay: 0.15s" onclick="openLightbox('abstract')">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/PER01610.jpg?alt=media&token=7f2f706c-e98e-47d1-9ba8-8f5f7632462c"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Abstract</span>
                 </div>
-                 <div class="project-indicator"></div>
+                <div class="project-indicator"></div>
             </div>
             <div class="photo-item" style="animation-delay: 0.1s" onclick="openLightbox('portraits')">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/PER04754-3.jpg?alt=media&token=15616d32-06d5-466e-8b68-a9cc37f7cce9" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/PER04754-3.jpg?alt=media&token=15616d32-06d5-466e-8b68-a9cc37f7cce9"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">People</span>
                 </div>
                 <div class="project-indicator"></div>
             </div>
             <div class="photo-item" style="animation-delay: 0.25s" onclick="openLightbox('poster')">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo5.jpg?alt=media&token=9702673f-3fc5-4f54-ad22-0a4e69754ed1" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo5.jpg?alt=media&token=9702673f-3fc5-4f54-ad22-0a4e69754ed1"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Poster Shots</span>
                 </div>
                 <div class="project-indicator"></div>
             </div>
             <div class="photo-item" style="animation-delay: 0.2s">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/DSC00711.jpg?alt=media&token=3e58cdef-6d1a-4453-98eb-37064442694a" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/DSC00711.jpg?alt=media&token=3e58cdef-6d1a-4453-98eb-37064442694a"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Polestar</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.5s" onclick="openLightbox('calma-tapas-bar')">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo10.jpg?alt=media&token=0afe6ef3-9ec1-4a55-b482-00784f40ef9d" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo10.jpg?alt=media&token=0afe6ef3-9ec1-4a55-b482-00784f40ef9d"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Calma Tapas Bar</span>
                 </div>
                 <div class="project-indicator"></div>
             </div>
             <div class="photo-item" style="animation-delay: 0.4s">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Darin-Square.jpg?alt=media&token=afd8afb9-e1b0-4d95-9f3f-a8e6dc9850fe" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Darin-Square.jpg?alt=media&token=afd8afb9-e1b0-4d95-9f3f-a8e6dc9850fe"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">DARIN</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.15s" onclick="openLightbox('weddings')">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/br%C3%B6llop3.jpg?alt=media&token=611d2c10-3284-4303-9c56-6e0a4409b837" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/br%C3%B6llop3.jpg?alt=media&token=611d2c10-3284-4303-9c56-6e0a4409b837"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Weddings</span>
                 </div>
                 <div class="project-indicator"></div>
             </div>
             <div class="photo-item" style="animation-delay: 0.55s" onclick="openLightbox('cultural')">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo13.jpg?alt=media&token=ce881bfd-d415-49b0-ab9e-9c8b0f033f3d" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo13.jpg?alt=media&token=ce881bfd-d415-49b0-ab9e-9c8b0f033f3d"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Cultural</span>
                 </div>
                 <div class="project-indicator"></div>
             </div>
             <div class="photo-item" style="animation-delay: 0.45s" onclick="openLightbox('seoul')">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo9.jpg?alt=media&token=e067078d-bb90-48bf-b398-80622e8ad9b6" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo9.jpg?alt=media&token=e067078d-bb90-48bf-b398-80622e8ad9b6"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Seoul, South Korea.</span>
                 </div>
@@ -1349,186 +1538,150 @@
             </div>
 
             <div class="photo-item" style="animation-delay: 0.95s">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo19.jpg?alt=media&token=b0918bad-639b-45a8-b8a4-d778d6146d08" 
-                     alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo19.jpg?alt=media&token=b0918bad-639b-45a8-b8a4-d778d6146d08"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Dunes. Sossousvlei, Namibia.</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.1s" onclick="openLightbox('tanzania')">
-                <img loading="lazy"  width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Sokoine-PS_09.jpg?alt=media&token=ecd55c89-b455-4772-9c2f-1977164652c2" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Sokoine-PS_09.jpg?alt=media&token=ecd55c89-b455-4772-9c2f-1977164652c2"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Sokoine & Korongoni - Primary Schools, Tanzania</span>
                 </div>
                 <div class="project-indicator"></div>
             </div>
             <div class="photo-item" style="animation-delay: 0.3s">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/ForestRotated.jpg?alt=media&token=fa4e4681-9243-4afe-ad50-9090cd806e99" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/ForestRotated.jpg?alt=media&token=fa4e4681-9243-4afe-ad50-9090cd806e99"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title"></span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.35s">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo7.jpg?alt=media&token=be0b8e52-0d8a-43ce-b918-3c11c5ee4ef4" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo7.jpg?alt=media&token=be0b8e52-0d8a-43ce-b918-3c11c5ee4ef4"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title"></span>
                 </div>
             </div>
 
             <div class="photo-item" style="animation-delay: 0.15s" onclick="openLightbox('street')">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/street1.jpg?alt=media&token=c3e3c061-d3df-46db-a19e-72716d04971b" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/street1.jpg?alt=media&token=c3e3c061-d3df-46db-a19e-72716d04971b"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Street</span>
                 </div>
                 <div class="project-indicator"></div>
             </div>
             <div class="photo-item" style="animation-delay: 0.4s" onclick="openLightbox('sports')">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo8.jpg?alt=media&token=3dff41ea-20bf-450f-8c4f-9eff06b07a8a" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo8.jpg?alt=media&token=3dff41ea-20bf-450f-8c4f-9eff06b07a8a"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Surf</span>
                 </div>
                 <div class="project-indicator"></div>
             </div>
-            
+
             <div class="photo-item" style="animation-delay: 0.05s">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/KVL06400%20-%20kopia.jpg?alt=media&token=79affa48-2cc0-4cfa-859f-6d27653bf585" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/KVL06400%20-%20kopia.jpg?alt=media&token=79affa48-2cc0-4cfa-859f-6d27653bf585"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title"></span>
                 </div>
             </div>
 
             <div class="photo-item" style="animation-delay: 0.7s" onclick="openLightbox('animals')">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo14.jpg?alt=media&token=25c9f8f6-b6d8-4fb7-804d-ff829d1782f5" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo14.jpg?alt=media&token=25c9f8f6-b6d8-4fb7-804d-ff829d1782f5"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Into the Wild</span>
                 </div>
                 <div class="project-indicator"></div>
             </div>
             <div class="photo-item" style="animation-delay: 0.75s">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo15.jpg?alt=media&token=ffe99324-7d52-4387-a149-97fc8e38b7e2" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo15.jpg?alt=media&token=ffe99324-7d52-4387-a149-97fc8e38b7e2"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Travels</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.8s">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo16.jpg?alt=media&token=e79ed287-89b5-44de-9f47-7358ac408da2" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo16.jpg?alt=media&token=e79ed287-89b5-44de-9f47-7358ac408da2"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Slow Shutter</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/GeneNoEdges.jpg?alt=media&token=5f293319-6336-49ba-ab10-fc6073a0eba7" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/GeneNoEdges.jpg?alt=media&token=5f293319-6336-49ba-ab10-fc6073a0eba7"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title"></span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.85s">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo17.jpg?alt=media&token=e8bcaf1f-afb4-492e-938a-07bbf8c9c16c" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo17.jpg?alt=media&token=e8bcaf1f-afb4-492e-938a-07bbf8c9c16c"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Contrasts</span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s" onclick="openLightbox('lights')">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo23.jpg?alt=media&token=dbf02eb7-fda4-4685-b5e6-b4c44b482efd" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo23.jpg?alt=media&token=dbf02eb7-fda4-4685-b5e6-b4c44b482efd"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Lights</span>
                 </div>
                 <div class="project-indicator"></div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo26.jpg?alt=media&token=b607dcef-e700-41e9-a349-bc53f14fe216" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo26.jpg?alt=media&token=b607dcef-e700-41e9-a349-bc53f14fe216"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title"></span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo27.jpg?alt=media&token=a5ac7791-db20-47b6-9871-6075bf9bc7c0" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo27.jpg?alt=media&token=a5ac7791-db20-47b6-9871-6075bf9bc7c0"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title"></span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo28.jpg?alt=media&token=a5cdcac1-bbfd-483f-abb1-3af145d9ef62" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo28.jpg?alt=media&token=a5cdcac1-bbfd-483f-abb1-3af145d9ef62"
+                    alt="Photography">
             </div>
             <div class="photo-item" style="animation-delay: 1s">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo30.jpg?alt=media&token=590f7584-3d61-4e22-9cf3-beb2d96a0443" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo30.jpg?alt=media&token=590f7584-3d61-4e22-9cf3-beb2d96a0443"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title"></span>
                 </div>
             </div>
             <div class="photo-item" style="animation-delay: 0.6s">
-                <img loading="lazy" 
-                     width="600" 
-                     height="600"
-                     decoding="async"
-                     src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo12.jpg?alt=media&token=01c6e51b-0789-42bc-ac2e-d263884bc943" alt="Photography">
+                <img loading="lazy" width="600" height="600" decoding="async"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo12.jpg?alt=media&token=01c6e51b-0789-42bc-ac2e-d263884bc943"
+                    alt="Photography">
                 <div class="photo-overlay">
                     <span class="photo-title">Montañas de 7 Colores, Peru</span>
                 </div>
@@ -1538,8 +1691,11 @@
         <!-- Video Gallery -->
         <div class="video-gallery hidden" id="videoGallery">
             <div class="video-item" style="animation-delay: 0.1s">
-                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Darin-Hero-Poster.jpg?alt=media&token=b88adeb5-3c8e-4a58-a64f-86e8b206fa4d">
-                    <source data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Showreel-MP4-HD-Low-Res.mp4?alt=media&token=ac2c5ae6-fab9-443b-832d-63ea366316c0" type="video/mp4">
+                <video preload="none"
+                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Darin-Hero-Poster.jpg?alt=media&token=b88adeb5-3c8e-4a58-a64f-86e8b206fa4d">
+                    <source
+                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Showreel-MP4-HD-Low-Res.mp4?alt=media&token=ac2c5ae6-fab9-443b-832d-63ea366316c0"
+                        type="video/mp4">
                 </video>
                 <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
                 <div class="photo-overlay" onclick="openVideoLightbox('showreel')">
@@ -1547,8 +1703,11 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.1s">
-                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/br%C3%B6llp1.jpg?alt=media&token=de83d0b1-3767-401f-950d-51b42ac7f0ef">
-                    <source data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Adam%26Alexandra-1920HD.mov?alt=media&token=362bc1f6-d721-4862-a5eb-35ebab061bc9" type="video/mp4">
+                <video preload="none"
+                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/br%C3%B6llp1.jpg?alt=media&token=de83d0b1-3767-401f-950d-51b42ac7f0ef">
+                    <source
+                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Adam%26Alexandra-1920HD.mov?alt=media&token=362bc1f6-d721-4862-a5eb-35ebab061bc9"
+                        type="video/mp4">
                 </video>
                 <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
                 <div class="photo-overlay" onclick="openVideoLightbox('wedding-adam-alexandra')">
@@ -1556,8 +1715,11 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.1s">
-                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/antonjosefinposter.png?alt=media&token=cc636265-e115-4ef5-95a7-d25dfa1c9f7e">
-                    <source data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Anton%20%26%20Josefine%20-%2002.07.2022.mp4?alt=media&token=583abb0e-edb2-4053-9433-cc834059064d" type="video/mp4">
+                <video preload="none"
+                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/antonjosefinposter.png?alt=media&token=cc636265-e115-4ef5-95a7-d25dfa1c9f7e">
+                    <source
+                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Anton%20%26%20Josefine%20-%2002.07.2022.mp4?alt=media&token=583abb0e-edb2-4053-9433-cc834059064d"
+                        type="video/mp4">
                 </video>
                 <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
                 <div class="photo-overlay" onclick="openVideoLightbox('wedding-anton-josefine')">
@@ -1565,8 +1727,11 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.1s">
-                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/EEB03249.jpg?alt=media&token=0052619b-2bf9-4389-9ac4-534c02b74d3d">
-                    <source data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Salem%20%26%20Nermina%20-%2029.04.2023.mp4?alt=media&token=e4b526a6-00d9-479c-b671-75fe07c3812e" type="video/mp4">
+                <video preload="none"
+                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/EEB03249.jpg?alt=media&token=0052619b-2bf9-4389-9ac4-534c02b74d3d">
+                    <source
+                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Salem%20%26%20Nermina%20-%2029.04.2023.mp4?alt=media&token=e4b526a6-00d9-479c-b671-75fe07c3812e"
+                        type="video/mp4">
                 </video>
                 <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
                 <div class="photo-overlay" onclick="openVideoLightbox('wedding-salem-nermina')">
@@ -1574,8 +1739,11 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.1s">
-                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/SUD09419.jpg?alt=media&token=15a4c608-6807-4696-89fe-efa9176f1de3">
-                    <source data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Spitzkoppe.mp4?alt=media&token=58ac6d01-d9a3-4722-aa13-ea035d6e975c" type="video/mp4">
+                <video preload="none"
+                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/SUD09419.jpg?alt=media&token=15a4c608-6807-4696-89fe-efa9176f1de3">
+                    <source
+                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Spitzkoppe.mp4?alt=media&token=58ac6d01-d9a3-4722-aa13-ea035d6e975c"
+                        type="video/mp4">
                 </video>
                 <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
                 <div class="photo-overlay" onclick="openVideoLightbox('spitzkoppe')">
@@ -1583,8 +1751,11 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.1s">
-                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Sokoine-PS_09.jpg?alt=media&token=ecd55c89-b455-4772-9c2f-1977164652c2">
-                    <source data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Sokoine%20Reel.mp4?alt=media&token=74d4ab11-20c3-45c6-95a3-d9df86677989" type="video/mp4">
+                <video preload="none"
+                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Sokoine-PS_09.jpg?alt=media&token=ecd55c89-b455-4772-9c2f-1977164652c2">
+                    <source
+                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Sokoine%20Reel.mp4?alt=media&token=74d4ab11-20c3-45c6-95a3-d9df86677989"
+                        type="video/mp4">
                 </video>
                 <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
                 <div class="photo-overlay" onclick="openVideoLightbox('sokoine-reel')">
@@ -1592,8 +1763,11 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.1s">
-                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/andreamartin.png?alt=media&token=9707bcf4-debb-460b-ab2c-1e7076c64005">
-                    <source data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Andrea%20%26%20Martin.mp4?alt=media&token=10989b34-467b-4a6f-bb48-d08c6608499a" type="video/mp4">
+                <video preload="none"
+                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/andreamartin.png?alt=media&token=9707bcf4-debb-460b-ab2c-1e7076c64005">
+                    <source
+                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Andrea%20%26%20Martin.mp4?alt=media&token=10989b34-467b-4a6f-bb48-d08c6608499a"
+                        type="video/mp4">
                 </video>
                 <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
                 <div class="photo-overlay" onclick="openVideoLightbox('wedding-andrea-martin')">
@@ -1601,8 +1775,11 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.2s">
-                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo10.jpg?alt=media&token=0afe6ef3-9ec1-4a55-b482-00784f40ef9d">
-                    <source data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Calma_short_10s_no_sound.mp4?alt=media&token=1e9ce3ca-ff2c-42da-9293-07814159e2ad" type="video/mp4">
+                <video preload="none"
+                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo10.jpg?alt=media&token=0afe6ef3-9ec1-4a55-b482-00784f40ef9d">
+                    <source
+                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Calma_short_10s_no_sound.mp4?alt=media&token=1e9ce3ca-ff2c-42da-9293-07814159e2ad"
+                        type="video/mp4">
                 </video>
                 <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
                 <div class="photo-overlay" onclick="openVideoLightbox('calma-restaurant')">
@@ -1610,8 +1787,11 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.3s">
-                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/calmaparty3.png?alt=media&token=ec574926-3b5a-4bb3-8447-e2347295268f">
-                    <source data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Club%20reel%203.mp4?alt=media&token=a9eedd67-71e9-4730-9379-ebdc2fffba76" type="video/mp4">
+                <video preload="none"
+                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/calmaparty3.png?alt=media&token=ec574926-3b5a-4bb3-8447-e2347295268f">
+                    <source
+                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Club%20reel%203.mp4?alt=media&token=a9eedd67-71e9-4730-9379-ebdc2fffba76"
+                        type="video/mp4">
                 </video>
                 <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
                 <div class="photo-overlay" onclick="openVideoLightbox('club-reels')">
@@ -1619,8 +1799,11 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.7s">
-                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/INSTA.jpg?alt=media&token=33d7bef4-dc4e-4d9d-94c8-103c533fcff0">
-                    <source data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Portugal%20Reel%20-%20FINAL.mp4?alt=media&token=e35294d0-6cb4-4220-ac2e-c69a7789d2da" type="video/mp4">
+                <video preload="none"
+                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/INSTA.jpg?alt=media&token=33d7bef4-dc4e-4d9d-94c8-103c533fcff0">
+                    <source
+                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Portugal%20Reel%20-%20FINAL.mp4?alt=media&token=e35294d0-6cb4-4220-ac2e-c69a7789d2da"
+                        type="video/mp4">
                 </video>
                 <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
                 <div class="photo-overlay" onclick="openVideoLightbox('portugal-aftermovie')">
@@ -1628,8 +1811,11 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.4s">
-                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/cyclistkorea.jpg?alt=media&token=195e0c48-422b-471c-ba5e-610f55c38df6">
-                    <source data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/CIS%2010s.mp4?alt=media&token=674d181a-0759-4ef7-aaf0-c50d8373495a" type="video/mp4">
+                <video preload="none"
+                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/cyclistkorea.jpg?alt=media&token=195e0c48-422b-471c-ba5e-610f55c38df6">
+                    <source
+                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/CIS%2010s.mp4?alt=media&token=674d181a-0759-4ef7-aaf0-c50d8373495a"
+                        type="video/mp4">
                 </video>
                 <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
                 <div class="photo-overlay" onclick="openVideoLightbox('cis')">
@@ -1637,8 +1823,11 @@
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.6s">
-                <video preload="none" poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/vastkustenposter.png?alt=media&token=020c202e-7ad3-40b4-a492-cf015098019d">
-                    <source data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/V%C3%A4stkusten%20-%20Loop%201min.mp4?alt=media&token=10da3865-7536-4499-9a73-41d5fa191b46" type="video/mp4">
+                <video preload="none"
+                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/vastkustenposter.png?alt=media&token=020c202e-7ad3-40b4-a492-cf015098019d">
+                    <source
+                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/V%C3%A4stkusten%20-%20Loop%201min.mp4?alt=media&token=10da3865-7536-4499-9a73-41d5fa191b46"
+                        type="video/mp4">
                 </video>
                 <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
                 <div class="photo-overlay" onclick="openVideoLightbox('vastkusten')">
@@ -1662,7 +1851,8 @@
             <div class="modal-close" onclick="closeContact()"></div>
             <div class="contact-info">
                 <div class="profile-picture">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/profile.jpg?alt=media&token=ee59e409-9577-4c1e-9756-179e2fea151d" alt="Victor Haugaard">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/profile.jpg?alt=media&token=ee59e409-9577-4c1e-9756-179e2fea151d"
+                        alt="Victor Haugaard">
                 </div>
                 <h2>Get in Touch</h2>
                 <p><strong>Victor Haugaard</strong></p>
@@ -1673,7 +1863,134 @@
                 <p>Phone: <a href="tel:+4741303593">+47 413 03 593</a></p>
                 <br>
                 <p>Instagram: <a href="https://instagram.com/victorhaugaard" target="_blank">@victorhaugaard</a></p>
+                <button class="pricing-btn" onclick="openPricing()">Pricing & Projects</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Pricing Modal -->
+    <div class="pricing-modal" id="pricingModal">
+        <div class="modal-content pricing-content">
+            <div class="modal-close" onclick="closePricing()"></div>
+
+            <section class="pricing-section">
+                <div class="language-toggle">
+                    <button id="svBtn" onclick="setLanguage('sv')">SV</button>
+                    <button id="enBtn" class="active" onclick="setLanguage('en')">EN</button>
+                </div>
+
+                <!-- SVENSKA -->
+                <div class="lang sv" style="display:none;">
+                    <h2>Prisguide – Foto & Film</h2>
+                    <p class="intro">
+                        Professionell foto- och videoproduktion anpassad efter projektets syfte,
+                        omfattning och hur materialet ska användas.
+                    </p>
+
+                    <h3>Tjänster</h3>
+                    <ul>
+                        <li>Företags- & varumärkesfoto</li>
+                        <li>Produktfoto & produktfilm</li>
+                        <li>Content för sociala medier</li>
+                        <li>Företagsfilmer & kampanjvideo</li>
+                        <li>Event & dokumentation</li>
+                    </ul>
+
+                    <h3>Prisnivåer (exkl. moms)</h3>
+                    <p>Alla uppdrag offereras med fast pris. Nedan nivåer är vägledande.</p>
+
+                    <table class="pricing-table">
+                        <tr>
+                            <th>Typ av uppdrag</th>
+                            <th>Pris från</th>
+                        </tr>
+                        <tr>
+                            <td>Content / mindre uppdrag</td>
+                            <td>3 500 kr</td>
+                        </tr>
+                        <tr>
+                            <td>Halvdag produktion</td>
+                            <td>4 500 – 8 000 kr</td>
+                        </tr>
+                        <tr>
+                            <td>Heldag produktion</td>
+                            <td>7 500 – 12 000 kr</td>
+                        </tr>
+                        <tr>
+                            <td>Filmproduktion (företag/kampanj)</td>
+                            <td>8 000 – 20 000 kr</td>
+                        </tr>
+                    </table>
+
+                    <h3>Användningsrätt</h3>
+                    <p>
+                        Anpassade användningsrättigheter ingår beroende på projektets karaktär.
+                        Digital användning (webb & sociala medier) ingår som standard.
+                        Kampanjer och annonsering offereras separat vid behov.
+                    </p>
+
+                    <p class="cta">
+                        <strong>Kontakta mig för offert.</strong><br>
+                        Efter en kort dialog presenterar jag ett tydligt upplägg med fast pris och leveranstid.
+                    </p>
+                </div>
+
+                <!-- ENGLISH -->
+                <div class="lang en">
+                    <h2>Pricing – Photo & Film</h2>
+                    <p class="intro">
+                        Professional photo and video production tailored to your project’s purpose,
+                        scope, and intended use.
+                    </p>
+
+                    <h3>Services</h3>
+                    <ul>
+                        <li>Brand & corporate photography</li>
+                        <li>Product photography & product films</li>
+                        <li>Social media content</li>
+                        <li>Corporate & campaign films</li>
+                        <li>Events & documentation</li>
+                    </ul>
+
+                    <h3>Price levels (excl. VAT)</h3>
+                    <p>All projects are quoted with a fixed price. The levels below are indicative.</p>
+
+                    <table class="pricing-table">
+                        <tr>
+                            <th>Type of project</th>
+                            <th>Starting from</th>
+                        </tr>
+                        <tr>
+                            <td>Content / smaller projects</td>
+                            <td>3 500 SEK</td>
+                        </tr>
+                        <tr>
+                            <td>Half-day production</td>
+                            <td>4 500 – 8 000 SEK</td>
+                        </tr>
+                        <tr>
+                            <td>Full-day production</td>
+                            <td>7 500 – 12 000 SEK</td>
+                        </tr>
+                        <tr>
+                            <td>Film production (corporate/campaign)</td>
+                            <td>8 000 – 20 000 SEK</td>
+                        </tr>
+                    </table>
+
+                    <h3>Usage rights</h3>
+                    <p>
+                        Usage rights are adapted to each project.
+                        Digital use (website & social media) is included by default.
+                        Campaigns, advertising, and extended usage are quoted separately if required.
+                    </p>
+
+                    <p class="cta">
+                        <strong>Get in touch for a quote.</strong><br>
+                        After a short discussion, I will present a clear setup with a fixed price and delivery timeline.
+                    </p>
+                </div>
+            </section>
         </div>
     </div>
 
@@ -1685,13 +2002,13 @@
                 <a href="tel:+4741303593">+47 413 03 593</a>
                 <p>Gothenburg, Sweden</p>
             </div>
-            
+
             <div class="footer-section">
                 <h3>Follow</h3>
                 <a href="https://instagram.com/victorhaugaard" target="_blank">Instagram</a>
                 <a href="https://www.victorhaugaard.com">www.victorhaugaard.com</a>
             </div>
-            
+
             <div class="footer-section">
                 <h3>Services</h3>
                 <p>Photography</p>
@@ -1699,7 +2016,7 @@
                 <p>Cinematography</p>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <p>&copy; 2025 Victor Haugaard. All rights reserved.</p>
             <p class="footer-company">Part of Script Collective AB</p>
@@ -1867,7 +2184,7 @@
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/EEB02557.jpg?alt=media&token=28502927-9003-414c-8161-cc222327ab20',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/EEB04750.jpg?alt=media&token=41651f11-4e57-497c-82a8-cb639f753a3c',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/EEB04938.jpg?alt=media&token=0879fed0-9ae6-4854-a0b6-5e6cdcbfc025'
-                    
+
                 ]
             },
             'street': {
@@ -1889,8 +2206,8 @@
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/EEB00673.jpg?alt=media&token=c34094de-1769-44dc-a8af-f0582a29f8dc',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/EEB00510.jpg?alt=media&token=18c8da74-0ee0-460e-b49d-b5fa2afdb839',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/EEB02557.jpg?alt=media&token=28502927-9003-414c-8161-cc222327ab20'
-                    
-                    
+
+
                 ]
             },
             'abstract': {
@@ -1923,10 +2240,10 @@
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/abstract.jpg?alt=media&token=c489700f-f904-463e-8a5e-ea5fa59dd36e',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Duma%20in%20Serengeti%203.png?alt=media&token=aa09592c-779d-4025-9ffe-ff83387fd8f4',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/VOLC%C3%81N%20DE%20FUEGO%20Poster.png?alt=media&token=7d8cba27-9025-4a8f-a01d-f85b7a666d1c',
-                    
+
                 ]
             },
-             'weddings': {
+            'weddings': {
                 title: 'Wedding Photography',
                 location: '',
                 description: 'Wedding photography',
@@ -1941,7 +2258,7 @@
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/antonjosefinposter.png?alt=media&token=cc636265-e115-4ef5-95a7-d25dfa1c9f7e',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/antonjosefinfin.png?alt=media&token=41910125-03ca-4db7-8a16-37ed54c934ea',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/josefin.png?alt=media&token=324be365-00e1-4c09-997c-9d6d2181a4f7'
-                    
+
                 ]
             },
             'animals': {
@@ -1963,8 +2280,8 @@
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/animal1.jpg?alt=media&token=ee6f77c2-2f07-4ed1-a345-31586210f95a',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/PER05101-6.jpg?alt=media&token=99603101-b36b-4a49-bbf9-3d1ad0ddb80a',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/PER03753-3.jpg?alt=media&token=68557f90-48de-4342-bf89-65889eb1f573'
-                    
-                    
+
+
                 ]
             },
             'cultural': {
@@ -2003,7 +2320,7 @@
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/InCollage_20250808_194351885.jpg?alt=media&token=eb4e556d-5ca4-4caf-b207-120628cfdb88',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/InCollage_20250808_200451878.jpg?alt=media&token=faf21817-a0b2-4138-a115-b0b4c3ad9c06',
                     'https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/InCollage_20250808_115827856.jpg?alt=media&token=db05e5b5-ee63-4da0-afa2-305ccb4aa934'
-                    
+
                 ]
             }
         };
@@ -2021,12 +2338,12 @@
         const videoOptionMobile = document.getElementById('videoOptionMobile');
         const photoGallery = document.getElementById('photoGallery');
         const videoGallery = document.getElementById('videoGallery');
-        
+
         let isVideo = false;
-        
+
         function toggleGallery() {
             isVideo = !isVideo;
-            
+
             // Update both toggles
             [toggleSwitch, toggleSwitchMobile].forEach(toggle => {
                 if (toggle) {
@@ -2037,7 +2354,7 @@
                     }
                 }
             });
-            
+
             // Update all options
             if (isVideo) {
                 stillOption.classList.add('inactive');
@@ -2046,7 +2363,7 @@
                 if (videoOptionMobile) videoOptionMobile.classList.remove('inactive');
                 photoGallery.classList.add('hidden');
                 videoGallery.classList.remove('hidden');
-                
+
                 videoGallery.querySelectorAll('.video-item').forEach((item, index) => {
                     item.style.animation = 'none';
                     setTimeout(() => {
@@ -2060,7 +2377,7 @@
                 if (videoOptionMobile) videoOptionMobile.classList.add('inactive');
                 photoGallery.classList.remove('hidden');
                 videoGallery.classList.add('hidden');
-                
+
                 photoGallery.querySelectorAll('.photo-item').forEach((item, index) => {
                     item.style.animation = 'none';
                     setTimeout(() => {
@@ -2069,12 +2386,12 @@
                 });
             }
         }
-        
+
         // Desktop toggle
         toggleSwitch.addEventListener('click', toggleGallery);
         stillOption.addEventListener('click', () => { if (isVideo) toggleGallery(); });
         videoOption.addEventListener('click', () => { if (!isVideo) toggleGallery(); });
-        
+
         // Mobile toggle
         if (toggleSwitchMobile) {
             toggleSwitchMobile.addEventListener('click', toggleGallery);
@@ -2096,7 +2413,7 @@
                 }
             });
         }, { rootMargin: '200px' });
-        
+
         document.querySelectorAll('.video-item').forEach(item => {
             videoLazyLoadObserver.observe(item);
         });
@@ -2107,17 +2424,17 @@
             const video = element.querySelector('video');
             const playIcon = element.querySelector('.play-icon');
             let pauseTimeout;
-            
+
             if (video.paused) {
                 video.play();
                 video.setAttribute('controls', 'controls');
                 playIcon.style.opacity = '0';
-                
-                video.addEventListener('ended', function() {
+
+                video.addEventListener('ended', function () {
                     resetVideoToPoster(element);
                 });
-                
-                video.addEventListener('pause', function() {
+
+                video.addEventListener('pause', function () {
                     if (!video.ended) {
                         pauseTimeout = setTimeout(() => {
                             if (video.paused && !video.ended) {
@@ -2126,11 +2443,11 @@
                         }, 3000);
                     }
                 });
-                
-                video.addEventListener('play', function() {
+
+                video.addEventListener('play', function () {
                     clearTimeout(pauseTimeout);
                 });
-                
+
             } else {
                 video.pause();
                 playIcon.style.opacity = '1';
@@ -2140,7 +2457,7 @@
         function resetVideoToPoster(element) {
             const video = element.querySelector('video');
             const playIcon = element.querySelector('.play-icon');
-            
+
             video.pause();
             video.currentTime = 0;
             video.removeAttribute('controls');
@@ -2168,28 +2485,28 @@
             const modal = document.getElementById('lightboxModal');
             const content = document.getElementById('lightboxContent');
             const project = projectData[projectId];
-            
+
             if (!project) return;
-            
+
             // Store current project images
             currentProjectImages = project.images;
             currentImageIndex = 0;
-            
+
             let galleryHTML = '';
             if (project.images.length > 1) {
                 const tripleImages = [...project.images, ...project.images, ...project.images];
-                
+
                 galleryHTML = `
                     <div class="lightbox-gallery">
                         <div class="lightbox-carousel">
-                            ${tripleImages.map(img => 
-                                `<img src="${img}" alt="${project.title}" onclick="changeMainImage('${img}')">`
-                            ).join('')}
+                            ${tripleImages.map(img =>
+                    `<img src="${img}" alt="${project.title}" onclick="changeMainImage('${img}')">`
+                ).join('')}
                         </div>
                     </div>
                 `;
             }
-            
+
             content.innerHTML = `
                 <div class="lightbox-main-image" id="mainImageContainer">
                     ${project.images.length > 1 ? '<div class="lightbox-nav-arrow left" onclick="navigateImage(-1)"></div>' : ''}
@@ -2203,7 +2520,7 @@
                     ${galleryHTML}
                 </div>
             `;
-            
+
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
 
@@ -2224,9 +2541,9 @@
             const modal = document.getElementById('lightboxModal');
             const content = document.getElementById('lightboxContent');
             const video = videoData[videoId];
-            
+
             if (!video) return;
-            
+
             content.innerHTML = `
                 <div class="lightbox-main-image">
                     <video controls autoplay style="width: 100%; height: auto; max-height: 70vh;">
@@ -2240,7 +2557,7 @@
                     <p>${video.description}</p>
                 </div>
             `;
-            
+
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -2248,7 +2565,7 @@
         function changeMainImage(src) {
             const img = document.getElementById('mainLightboxImage');
             img.src = src;
-            
+
             // Update current index
             currentImageIndex = currentProjectImages.indexOf(src);
         }
@@ -2282,7 +2599,7 @@
         document.querySelectorAll('img[loading="lazy"]').forEach(img => {
             img.classList.add('loading');
 
-            img.addEventListener('load', function() {
+            img.addEventListener('load', function () {
                 this.classList.remove('loading');
                 this.classList.add('loaded');
             });
@@ -2334,14 +2651,14 @@
         // ============ MAIN IMAGE NAVIGATION ============
         function navigateImage(direction) {
             if (currentProjectImages.length <= 1) return;
-            
+
             currentImageIndex = (currentImageIndex + direction + currentProjectImages.length) % currentProjectImages.length;
             const img = document.getElementById('mainLightboxImage');
-            
+
             // Fade effect
             img.style.opacity = '0.5';
             img.style.transition = 'opacity 0.2s';
-            
+
             setTimeout(() => {
                 img.src = currentProjectImages[currentImageIndex];
                 img.style.opacity = '1';
@@ -2352,29 +2669,29 @@
             const container = document.getElementById('mainImageContainer');
             const img = document.getElementById('mainLightboxImage');
             if (!container || !img) return;
-            
+
             let startX = 0;
             let isDragging = false;
-            
+
             const handleStart = (e) => {
                 isDragging = true;
                 startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
                 img.classList.add('dragging');
             };
-            
+
             const handleMove = (e) => {
                 if (!isDragging) return;
                 e.preventDefault();
             };
-            
+
             const handleEnd = (e) => {
                 if (!isDragging) return;
                 isDragging = false;
                 img.classList.remove('dragging');
-                
+
                 const endX = e.type.includes('mouse') ? e.pageX : e.changedTouches[0].clientX;
                 const diff = startX - endX;
-                
+
                 // Swipe threshold: 50px
                 if (Math.abs(diff) > 50) {
                     if (diff > 0) {
@@ -2384,12 +2701,12 @@
                     }
                 }
             };
-            
+
             // Touch events
             container.addEventListener('touchstart', handleStart);
             container.addEventListener('touchmove', handleMove);
             container.addEventListener('touchend', handleEnd);
-            
+
             // Mouse events
             container.addEventListener('mousedown', handleStart);
             container.addEventListener('mousemove', handleMove);
@@ -2413,64 +2730,64 @@
             currentIndex: 0,
             imageCount: 0
         };
-        
+
         function setupCarouselNavigation() {
             const carousel = document.querySelector('.lightbox-carousel');
             if (!carousel) return;
-        
+
             carouselState.carousel = carousel;
             carouselState.imageCount = carousel.querySelectorAll('img').length / 3;
-            
+
             carousel.addEventListener('touchstart', touchStart);
             carousel.addEventListener('touchend', touchEnd);
             carousel.addEventListener('touchmove', touchMove);
-            
+
             carousel.addEventListener('mousedown', touchStart);
             carousel.addEventListener('mouseup', touchEnd);
             carousel.addEventListener('mouseleave', touchEnd);
             carousel.addEventListener('mousemove', touchMove);
-            
+
             carousel.addEventListener('contextmenu', (e) => e.preventDefault());
-            
+
             document.addEventListener('keydown', handleArrowKeys);
         }
-        
+
         function touchStart(event) {
             const carousel = carouselState.carousel;
             if (!carousel) return;
-            
+
             carouselState.isDragging = true;
             carouselState.startPos = getPositionX(event);
-            
+
             carousel.style.animationPlayState = 'paused';
-            
+
             const style = window.getComputedStyle(carousel);
             const matrix = new WebKitCSSMatrix(style.transform);
             carouselState.prevTranslate = matrix.m41;
-            
+
             carousel.style.cursor = 'grabbing';
         }
-        
+
         function touchMove(event) {
             if (!carouselState.isDragging) return;
-            
+
             const currentPosition = getPositionX(event);
             const diff = currentPosition - carouselState.startPos;
             carouselState.currentTranslate = carouselState.prevTranslate + diff;
-            
+
             carouselState.carousel.style.transform = `translateX(${carouselState.currentTranslate}px)`;
             carouselState.carousel.style.animation = 'none';
         }
-        
+
         function touchEnd() {
             if (!carouselState.isDragging) return;
-            
+
             carouselState.isDragging = false;
             const carousel = carouselState.carousel;
-            
+
             const movedBy = carouselState.currentTranslate - carouselState.prevTranslate;
             const imageWidth = carousel.querySelector('img').offsetWidth + 15;
-            
+
             if (Math.abs(movedBy) > imageWidth / 4) {
                 if (movedBy > 0) {
                     scrollCarousel('left');
@@ -2478,23 +2795,23 @@
                     scrollCarousel('right');
                 }
             }
-            
+
             carousel.style.cursor = 'grab';
-            
+
             setTimeout(() => {
                 carousel.style.animation = 'scroll-carousel 40s linear infinite';
                 carousel.style.animationPlayState = 'running';
             }, 2000);
         }
-        
+
         function getPositionX(event) {
             return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
         }
-        
+
         function handleArrowKeys(event) {
             const modal = document.getElementById('lightboxModal');
             if (!modal.classList.contains('active')) return;
-            
+
             if (event.key === 'ArrowLeft') {
                 event.preventDefault();
                 navigateImage(-1); // Navigate main image
@@ -2503,28 +2820,28 @@
                 navigateImage(1); // Navigate main image
             }
         }
-        
+
         function scrollCarousel(direction) {
             const carousel = carouselState.carousel;
             if (!carousel) return;
-            
+
             const imageWidth = carousel.querySelector('img').offsetWidth + 15;
             const style = window.getComputedStyle(carousel);
             const matrix = new WebKitCSSMatrix(style.transform);
             let currentTranslate = matrix.m41;
-            
+
             carousel.style.animationPlayState = 'paused';
             carousel.style.animation = 'none';
-            
+
             if (direction === 'left') {
                 currentTranslate += imageWidth * 2;
             } else {
                 currentTranslate -= imageWidth * 2;
             }
-            
+
             carousel.style.transition = 'transform 0.4s ease';
             carousel.style.transform = `translateX(${currentTranslate}px)`;
-            
+
             setTimeout(() => {
                 carousel.style.transition = '';
                 setTimeout(() => {
@@ -2537,7 +2854,7 @@
         // Toggle text on mobile tap
         if (window.innerWidth <= 768) {
             const hero = document.querySelector('.hero');
-            hero.addEventListener('click', function() {
+            hero.addEventListener('click', function () {
                 this.classList.toggle('show-text');
 
                 // Auto-hide after 3 seconds
@@ -2616,6 +2933,49 @@
             });
         });
 
+        // Pricing Modal Functions
+        function openPricing() {
+            document.getElementById('pricingModal').classList.add('active');
+            // Keep body locked (it's already locked by contact modal usually, but ensures it stays locked)
+            document.body.style.overflow = 'hidden';
+
+            // Close contact modal if it's open (optional, but cleaner UX)
+            // document.getElementById('contactModal').classList.remove('active');
+            // Actually, maybe we want to come back to contact modal?
+            // For now, let's stack them. If user closes pricing, they return to contact.
+        }
+
+        function closePricing() {
+            document.getElementById('pricingModal').classList.remove('active');
+            // Only unlock body if contact modal is NOT active
+            if (!document.getElementById('contactModal').classList.contains('active')) {
+                document.body.style.overflow = '';
+            }
+        }
+
+        function setLanguage(lang) {
+            document.querySelectorAll('.lang').forEach(el => el.style.display = 'none');
+            document.querySelector('.lang.' + lang).style.display = 'block';
+
+            document.getElementById('svBtn').classList.remove('active');
+            document.getElementById('enBtn').classList.remove('active');
+
+            document.getElementById(lang + 'Btn').classList.add('active');
+        }
+
+        // Close pricing modal on click outside
+        document.getElementById('pricingModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closePricing();
+        });
+
+        // Add Escape key handler for pricing modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closePricing();
+            }
+        });
+
     </script>
 </body>
+
 </html>
