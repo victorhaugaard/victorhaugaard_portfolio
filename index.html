@@ -58,7 +58,7 @@
             width: 100%;
             top: 0;
             z-index: 900;
-            padding: 20px 50px;
+            padding: 20px 90px 20px 75px;
             background: linear-gradient(to bottom, rgba(10, 10, 10, 0.95) 0%, transparent 100%);
             backdrop-filter: blur(10px);
         }
@@ -187,14 +187,14 @@
             object-fit: cover;
         }
 
-        /* ADD THIS - Letterbox style on mobile */
+        /* Letterbox style on mobile - wider, less cropped than a square */
         @media (max-width: 768px) {
             .hero {
-                height: 100vw;
-                /* Makes it square (width = height) */
-                min-height: 400px;
+                height: 75vw;
+                /* Shows more of the video's width, less vertical crop */
+                min-height: 260px;
                 /* Prevents it from being too small */
-                max-height: 600px;
+                max-height: 480px;
                 /* Prevents it from being too tall */
             }
 
@@ -218,7 +218,7 @@
         /* Gallery Container */
         .gallery-container {
             min-height: 100vh;
-            padding: 100px 50px;
+            padding: 20px 50px 100px;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -494,6 +494,42 @@
             opacity: 0.6;
         }
 
+        .contact-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        .contact-icon {
+            display: inline-flex;
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+        }
+
+        .contact-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: #f5f5f5;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .colleague-note {
+            text-align: center;
+            font-style: italic;
+            font-size: 12px;
+            opacity: 0.55;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -561,10 +597,6 @@
                 font-size: 10px;
                 letter-spacing: 1px;
                 padding: 8px 15px;
-            }
-
-            .gallery-container {
-                padding: 80px 20px;
             }
 
             .photo-gallery {
@@ -698,30 +730,18 @@
             }
         }
 
-        /* Mobile Toggle - Below Hero */
-        .mobile-toggle-container {
-            display: none;
+        /* Toggle Bar - below Worked With logos, above gallery.
+           More space above (away from logos), less below (close to content). */
+        .toggle-bar {
+            display: flex;
             justify-content: center;
-            padding: 20px;
+            padding: 40px 20px 10px;
             background: #0a0a0a;
         }
 
         @media (max-width: 768px) {
-
-            /* Hide toggle in header on mobile */
-            .nav-controls .toggle-container {
-                display: none;
-            }
-
-            /* Show mobile toggle below hero */
-            .mobile-toggle-container {
-                display: flex;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-toggle-container {
-                padding: 15px 20px;
+            .toggle-bar {
+                padding: 25px 20px 8px;
             }
 
             .gallery-container {
@@ -742,7 +762,7 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             opacity: 0.45;
-            margin-bottom: 30px;
+            margin-bottom: 0;
             font-weight: 300;
         }
 
@@ -1174,13 +1194,6 @@
                     alt="Victor Haugaard Logo">
             </div>
             <div class="nav-controls">
-                <div class="toggle-container">
-                    <span class="toggle-option" id="stillOption">STILLS</span>
-                    <div class="toggle-switch" id="toggleSwitch">
-                        <div class="toggle-slider"></div>
-                    </div>
-                    <span class="toggle-option inactive" id="videoOption">CINE</span>
-                </div>
                 <button class="contact-btn" onclick="openContact()">LET'S TALK</button>
             </div>
         </div>
@@ -1306,14 +1319,14 @@
         </div>
     </section>
 
-    <!-- Mobile Toggle (appears below hero on mobile) -->
-    <div class="mobile-toggle-container">
+    <!-- Toggle (below Worked With logos, above gallery) -->
+    <div class="toggle-bar">
         <div class="toggle-container">
-            <span class="toggle-option" id="stillOptionMobile">STILLS</span>
-            <div class="toggle-switch" id="toggleSwitchMobile">
+            <span class="toggle-option" id="stillOption">STILLS</span>
+            <div class="toggle-switch" id="toggleSwitch">
                 <div class="toggle-slider"></div>
             </div>
-            <span class="toggle-option inactive" id="videoOptionMobile">CINE</span>
+            <span class="toggle-option inactive" id="videoOption">CINE</span>
         </div>
     </div>
 
@@ -1702,11 +1715,26 @@
                 <p>Photographer & Videographer</p>
                 <p>Gothenburg, Sweden</p>
                 <br>
-                <p>Email: <a href="mailto:victor@rgncy.club">victor@rgncy.club</a></p>
-                <p>Phone: <a href="tel:+46760182728">+46 76 018 27 28</a></p>
-                <br>
-                <p>Instagram: <a href="https://instagram.com/victorhaugaard" target="_blank">@victorhaugaard</a></p>
+                <div class="contact-row">
+                    <span class="contact-icon">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 6l10 7 10-7"></path></svg>
+                    </span>
+                    <a href="mailto:victor@rgncy.club">victor@rgncy.club</a>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    </span>
+                    <a href="tel:+46760182728">+46 76 018 27 28</a>
+                </div>
+                <div class="contact-row">
+                    <span class="contact-icon">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </span>
+                    <a href="https://instagram.com/victorhaugaard" target="_blank">@victorhaugaard</a>
+                </div>
                 <button class="pricing-btn" onclick="openPricing()">Pricing & Projects</button>
+                <p class="colleague-note">Looking for even more high-end quality? Look up my colleagues at <a href="https://www.rgncy.club" target="_blank" rel="noopener noreferrer">rgncy.club</a></p>
             </div>
         </div>
     </div>
@@ -1868,13 +1896,10 @@
     </footer>
 
     <script>
-        // Toggle between Still and Video - Synced for desktop and mobile
+        // Toggle between Still and Video
         const toggleSwitch = document.getElementById('toggleSwitch');
-        const toggleSwitchMobile = document.getElementById('toggleSwitchMobile');
         const stillOption = document.getElementById('stillOption');
         const videoOption = document.getElementById('videoOption');
-        const stillOptionMobile = document.getElementById('stillOptionMobile');
-        const videoOptionMobile = document.getElementById('videoOptionMobile');
         const photoGallery = document.getElementById('photoGallery');
         const videoGallery = document.getElementById('videoGallery');
 
@@ -1883,23 +1908,10 @@
         function toggleGallery() {
             isVideo = !isVideo;
 
-            // Update both toggles
-            [toggleSwitch, toggleSwitchMobile].forEach(toggle => {
-                if (toggle) {
-                    if (isVideo) {
-                        toggle.classList.add('video');
-                    } else {
-                        toggle.classList.remove('video');
-                    }
-                }
-            });
-
-            // Update all options
             if (isVideo) {
+                toggleSwitch.classList.add('video');
                 stillOption.classList.add('inactive');
                 videoOption.classList.remove('inactive');
-                if (stillOptionMobile) stillOptionMobile.classList.add('inactive');
-                if (videoOptionMobile) videoOptionMobile.classList.remove('inactive');
                 photoGallery.classList.add('hidden');
                 videoGallery.classList.remove('hidden');
 
@@ -1910,10 +1922,9 @@
                     }, 10);
                 });
             } else {
+                toggleSwitch.classList.remove('video');
                 stillOption.classList.remove('inactive');
                 videoOption.classList.add('inactive');
-                if (stillOptionMobile) stillOptionMobile.classList.remove('inactive');
-                if (videoOptionMobile) videoOptionMobile.classList.add('inactive');
                 photoGallery.classList.remove('hidden');
                 videoGallery.classList.add('hidden');
 
@@ -1926,17 +1937,9 @@
             }
         }
 
-        // Desktop toggle
         toggleSwitch.addEventListener('click', toggleGallery);
         stillOption.addEventListener('click', () => { if (isVideo) toggleGallery(); });
         videoOption.addEventListener('click', () => { if (!isVideo) toggleGallery(); });
-
-        // Mobile toggle
-        if (toggleSwitchMobile) {
-            toggleSwitchMobile.addEventListener('click', toggleGallery);
-            stillOptionMobile.addEventListener('click', () => { if (isVideo) toggleGallery(); });
-            videoOptionMobile.addEventListener('click', () => { if (!isVideo) toggleGallery(); });
-        }
 
         // Lazy load videos only when near viewport
         const videoLazyLoadObserver = new IntersectionObserver((entries) => {
