@@ -12,7 +12,7 @@
         href="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/hero-poster.jpg?alt=media"
         fetchpriority="high">
     <link rel="preload" as="video"
-        href="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/hero-video_victorhauagaard.mp4?alt=media"
+        href="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/hero-video_victorhaugaard.mp4?alt=media"
         type="video/mp4">
 
     <link rel="icon" type="image/png" sizes="32x32"
@@ -300,7 +300,7 @@
             align-items: center;
             justify-content: center;
             padding: 30px;
-            cursor: pointer;
+            pointer-events: none;
         }
 
         .photo-item:hover .photo-overlay {
@@ -391,6 +391,89 @@
             border-top: 12px solid transparent;
             border-bottom: 12px solid transparent;
             margin-left: 5px;
+        }
+
+        /* Vertical video carousel (portrait reels shown pillarboxed in a 16:9 cell) */
+        .video-carousel video {
+            width: auto;
+            height: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 15;
+            opacity: 0;
+            transition: opacity 0.3s, background 0.3s;
+        }
+
+        .video-carousel:hover .carousel-arrow {
+            opacity: 1;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .carousel-arrow.prev {
+            left: 12px;
+        }
+
+        .carousel-arrow.next {
+            right: 12px;
+        }
+
+        .carousel-arrow::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #fff;
+            border-right: 2px solid #fff;
+        }
+
+        .carousel-arrow.prev::after {
+            transform: rotate(-135deg);
+            margin-left: 4px;
+        }
+
+        .carousel-arrow.next::after {
+            transform: rotate(45deg);
+            margin-right: 4px;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 15;
+        }
+
+        .carousel-dots .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transition: background 0.3s;
+        }
+
+        .carousel-dots .dot.active {
+            background: #fff;
         }
 
         /* Contact Modal - SMALLER VERSION */
@@ -1204,7 +1287,7 @@
             <video autoplay muted loop playsinline preload="metadata"
                 poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/hero-poster.jpg?alt=media">
                 <source
-                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/hero-video_victorhauagaard.mp4?alt=media"
+                    src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/hero-video_victorhaugaard.mp4?alt=media"
                     type="video/mp4">
             </video>
         </div>
@@ -1555,6 +1638,17 @@
         <!-- Video Gallery -->
         <div class="video-gallery hidden" id="videoGallery">
             <div class="video-item" style="animation-delay: 0.1s">
+                <video preload="none" poster="assets/posters/showreel-2026.jpg">
+                    <source
+                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/showreel_2026_victorhaugaard.mp4?alt=media"
+                        type="video/mp4">
+                </video>
+                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
+                <div class="photo-overlay">
+                    <span class="photo-title">Showreel 2026</span>
+                </div>
+            </div>
+            <div class="video-item" style="animation-delay: 0.1s">
                 <video preload="none"
                     poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Darin-Hero-Poster.jpg?alt=media&token=b88adeb5-3c8e-4a58-a64f-86e8b206fa4d">
                     <source
@@ -1564,6 +1658,26 @@
                 <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
                 <div class="photo-overlay">
                     <span class="photo-title">Showreel</span>
+                </div>
+            </div>
+            <div class="video-item video-carousel" style="animation-delay: 0.1s"
+                data-videos='[{"src":"https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Physical100SWE_Occupation_ENG_01_subs.mp4?alt=media","poster":"https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/netflix_thumbnail.jpg?alt=media","title":"Physical 100 Sweden – Occupation"},{"src":"https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Physical100SWE_HowFarWillYouGo_ENG_SUBS_01.mp4?alt=media","poster":"https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/netflix_thumbnail.jpg?alt=media","title":"Physical 100 Sweden – How Far Will You Go"}]'
+                data-current="0">
+                <video preload="none"
+                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/netflix_thumbnail.jpg?alt=media">
+                    <source
+                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Physical100SWE_Occupation_ENG_01_subs.mp4?alt=media"
+                        type="video/mp4">
+                </video>
+                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
+                <div class="carousel-arrow prev" onclick="switchCarouselVideo(event, this.parentElement, -1)"></div>
+                <div class="carousel-arrow next" onclick="switchCarouselVideo(event, this.parentElement, 1)"></div>
+                <div class="carousel-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                </div>
+                <div class="photo-overlay">
+                    <span class="photo-title">Physical 100 Sweden – Occupation</span>
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.1s">
@@ -1626,18 +1740,6 @@
                     <span class="photo-title">Sokoine Primary School</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.1s">
-                <video preload="none"
-                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/andreamartin.png?alt=media&token=9707bcf4-debb-460b-ab2c-1e7076c64005">
-                    <source
-                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Andrea%20%26%20Martin.mp4?alt=media&token=10989b34-467b-4a6f-bb48-d08c6608499a"
-                        type="video/mp4">
-                </video>
-                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
-                <div class="photo-overlay">
-                    <span class="photo-title">Wedding Movie - Andrea & Martin</span>
-                </div>
-            </div>
             <div class="video-item" style="animation-delay: 0.2s">
                 <video preload="none"
                     poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/photo10.jpg?alt=media&token=0afe6ef3-9ec1-4a55-b482-00784f40ef9d">
@@ -1650,18 +1752,6 @@
                     <span class="photo-title">Calma Tapas Bar</span>
                 </div>
             </div>
-            <div class="video-item" style="animation-delay: 0.3s">
-                <video preload="none"
-                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/calmaparty3.png?alt=media&token=ec574926-3b5a-4bb3-8447-e2347295268f">
-                    <source
-                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/Club%20reel%203.mp4?alt=media&token=a9eedd67-71e9-4730-9379-ebdc2fffba76"
-                        type="video/mp4">
-                </video>
-                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
-                <div class="photo-overlay">
-                    <span class="photo-title">Club Reels</span>
-                </div>
-            </div>
             <div class="video-item" style="animation-delay: 0.7s">
                 <video preload="none"
                     poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/INSTA.jpg?alt=media&token=33d7bef4-dc4e-4d9d-94c8-103c533fcff0">
@@ -1672,18 +1762,6 @@
                 <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
                 <div class="photo-overlay">
                     <span class="photo-title">Portugal After Movie 2021</span>
-                </div>
-            </div>
-            <div class="video-item" style="animation-delay: 0.4s">
-                <video preload="none"
-                    poster="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/cyclistkorea.jpg?alt=media&token=195e0c48-422b-471c-ba5e-610f55c38df6">
-                    <source
-                        data-src="https://firebasestorage.googleapis.com/v0/b/victorhaugaard-portfolio.firebasestorage.app/o/CIS%2010s.mp4?alt=media&token=674d181a-0759-4ef7-aaf0-c50d8373495a"
-                        type="video/mp4">
-                </video>
-                <div class="play-icon" onclick="playVideo(event, this.parentElement)"></div>
-                <div class="photo-overlay">
-                    <span class="photo-title">CIS - Chalmers Idrottssällskap</span>
                 </div>
             </div>
             <div class="video-item" style="animation-delay: 0.6s">
@@ -1970,6 +2048,7 @@
                 video.play();
                 video.setAttribute('controls', 'controls');
                 playIcon.style.opacity = '0';
+                element.querySelectorAll('.carousel-arrow, .carousel-dots').forEach(el => el.style.opacity = '0');
 
                 video.addEventListener('ended', function () {
                     resetVideoToPoster(element);
@@ -1988,6 +2067,33 @@
             video.removeAttribute('controls');
             video.load();
             playIcon.style.opacity = '1';
+            element.querySelectorAll('.carousel-arrow, .carousel-dots').forEach(el => el.style.opacity = '');
+        }
+
+        // Switch between slides in a vertical-reel carousel video item
+        function switchCarouselVideo(event, element, direction) {
+            event.stopPropagation();
+            const videos = JSON.parse(element.dataset.videos);
+            let current = parseInt(element.dataset.current, 10);
+            current = (current + direction + videos.length) % videos.length;
+            element.dataset.current = current;
+
+            resetVideoToPoster(element);
+
+            const next = videos[current];
+            const video = element.querySelector('video');
+            const source = video.querySelector('source');
+
+            video.poster = next.poster;
+            source.src = next.src;
+            source.setAttribute('data-src', next.src);
+            video.load();
+
+            element.querySelector('.photo-title').textContent = next.title;
+
+            element.querySelectorAll('.carousel-dots .dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === current);
+            });
         }
 
         const videoObserver = new IntersectionObserver((entries) => {
