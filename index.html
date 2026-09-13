@@ -2068,7 +2068,6 @@
                 video.play();
                 video.setAttribute('controls', 'controls');
                 playIcon.style.opacity = '0';
-                element.querySelectorAll('.carousel-arrow, .carousel-dots').forEach(el => el.style.opacity = '0');
 
                 video.addEventListener('ended', function () {
                     resetVideoToPoster(element);
@@ -2087,7 +2086,6 @@
             video.removeAttribute('controls');
             video.load();
             playIcon.style.opacity = '1';
-            element.querySelectorAll('.carousel-arrow, .carousel-dots').forEach(el => el.style.opacity = '');
         }
 
         // Switch between slides in a vertical-reel carousel video item
